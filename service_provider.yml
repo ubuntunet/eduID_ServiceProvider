@@ -1,0 +1,103 @@
+- name: Install example of a Shibboleth Service Provider for UbuntuNet Alliance
+  hosts: development
+  become: True
+  vars:
+    fully_qualified_service_name: 192.168.33.88
+    # idp_fqdn:  192.168.33.44
+    idp_url: https://192.168.33.44    
+    idp_entity_id: "{{ idp_url }}/idp/"
+    idp_scope: ubuntunet.net
+    discovery_service_url: https://192.168.33.55/DS/WAYF
+    support_email: id@ubuntunet.net
+    admin_email: idp@ubuntunet.net
+    # certificate_key_path: /etc/ssl/private/{{ fully_qualified_service_name }}.key
+    # certificate_cert_path: /etc/ssl/certs/{{ fully_qualified_service_name }}.crt
+    # tomcat_version: 7
+    # ds_version: 1.2.1
+
+  tasks:
+    # I Installation
+    # https://www.switch.ch/aai/guides/sp/installation/?os=ubuntu
+
+    # 2. Prerequisites
+    - name: Install needed utility programs
+      apt: pkg={{ item }} update_cache=yes cache_valid_time=36000
+      with_items:
+        - ntp
+        - unzip
+
+    - name: Install apache2
+      apt: pkg=apache2 update_cache=yes cache_valid_time=36000
+
+    - name: Enable Apache SSL modules
+      command: a2enmod ssl
+      notify: restart apache
+
+    - name: Disable default configuration
+      command: a2dissite 000-default
+      notify: restart apache
+
+    - name: Enable IdP configuration
+      command: a2ensite default-ssl.conf
+      notify: restart apache
+
+
+    # 3. Shibboleth Repository
+
+    - name: Create download directory
+      file: >
+        path=/usr/local/dist
+        state=directory
+
+    - name: Download Switch Repository Key
+      get_url: url=http://pkg.switch.ch/switchaai/SWITCHaai-swdistrib.asc dest=/usr/local/dist/
+
+    - name: Add Repository Key
+      command: apt-key add /usr/local/dist/SWITCHaai-swdistrib.asc
+
+    - name: Copy Repository
+      copy: > 
+        src=files/SWITCHaai-swdistrib.list 
+        dest=/etc/apt/sources.list.d/
+
+    - name: Refresh Repository
+      # apt: update_cache=yes
+      apt: update_cache=yes cache_valid_time=36000
+
+
+    # 4. Installation
+
+    - name: Install Shibboleth
+      apt: pkg=shibboleth update_cache=yes cache_valid_time=36000
+
+
+    # II Configuration
+    # https://www.switch.ch/aai/guides/sp/configuration/
+
+    # 4. X.509 certificate for SAML message signing/encrypting
+    - name: Create self-signed certificate
+      command: shib-keygen -f -u _shibd -h {{ fully_qualified_service_name }} -y 3 -e https://{{ fully_qualified_service_name }}/shibboleth -o /etc/shibboleth/
+
+
+    # 5. Shibboleth Configuration
+    
+    - name: Copy Shibboleth config file
+      template: >
+        src=templates/shibboleth2.xml.j2
+        dest=/etc/shibboleth/shibboleth2.xml
+      notify: restart shibboleth
+    
+    - name: Copy IdP metadata file
+      template: >
+        src=templates/ubuntunet-metadata.xml.j2
+        dest=/etc/shibboleth/ubuntunet-metadata.xml
+      notify: restart shibboleth
+
+
+  handlers:
+    - name: restart apache
+      service: name=apache2 state=restarted
+
+    - name: restart shibboleth
+      service: name=shibd state=restarted
+
