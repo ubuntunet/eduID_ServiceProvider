@@ -86,12 +86,12 @@ metadata to you properly.
         <!-- This tells the SP where/how to resolve SAML 1.x artifacts into SAML assertions. -->
         <ArtifactResolutionService index="1"
             Binding="urn:oasis:names:tc:SAML:1.0:bindings:SOAP-binding"
-            Location="https://idp.example.org:8443/shibboleth/profile/saml1/soap/ArtifactResolution"/>
+            Location="{{ idp_url }}:8443/idp/profile/saml1/soap/ArtifactResolution"/>
 
         <!-- This tells the SP where/how to resolve SAML 2.0 artifacts into SAML messages. -->
         <ArtifactResolutionService index="2"
             Binding="urn:oasis:names:tc:SAML:2.0:bindings:SOAP"
-            Location="{{ idp_url }}:8443/shibboleth/profile/saml2/soap/ArtifactResolution"/>
+            Location="{{ idp_url }}:8443/idp/profile/SAML2/soap/ArtifactResolution"/>
 
         <!-- This is informational and communicates what kinds of SAML Subjects the IdP supports. -->
         <NameIDFormat>urn:mace:shibboleth:1.0:nameIdentifier</NameIDFormat>
@@ -99,11 +99,11 @@ metadata to you properly.
 
         <!-- This tells the SP how and where to request authentication. -->
         <SingleSignOnService Binding="urn:mace:shibboleth:1.0:profiles:AuthnRequest"
-            Location="{{ idp_url }}/shibboleth/profile/shibboleth/SSO"/>
+            Location="{{ idp_url }}/idp/profile/shibboleth/SSO"/>
         <SingleSignOnService Binding="urn:oasis:names:tc:SAML:2.0:bindings:HTTP-Redirect"
-            Location="{{ idp_url }}/shibboleth/profile/saml2/Redirect/SSO"/>
+            Location="{{ idp_url }}/idp/profile/SAML2/Redirect/SSO"/>
         <SingleSignOnService Binding="urn:oasis:names:tc:SAML:2.0:bindings:HTTP-POST"
-            Location="{{ idp_url }}/shibboleth/profile/saml2/POST/SSO"/>
+            Location="{{ idp_url }}/id/profile/SAML2/POST/SSO"/>
     </IDPSSODescriptor>
 
     <!-- Most Shibboleth IdPs also support SAML 1.x attribute queries, so this role is also included. -->
@@ -143,10 +143,10 @@ metadata to you properly.
         and encrypted during SSO rather than pulled after.
         -->
         <AttributeService Binding="urn:oasis:names:tc:SAML:1.0:bindings:SOAP-binding"
-            Location="{{ idp_url }}:8443/shibboleth/profiles/saml1/soap/AttributeQuery"/>
+            Location="{{ idp_url }}:8443/idp/profiles/saml1/soap/AttributeQuery"/>
         <!--
         <AttributeService Binding="urn:oasis:names:tc:SAML:2.0:bindings:SOAP"
-            Location="https://idp.example.org:8443/shibboleth/profiles/saml2/soap/AttributeQuery"/>
+            Location="https://idp.example.org:8443/idp/profiles/SAML2/soap/AttributeQuery"/>
         -->
 
         <!-- This is informational and communicates what kinds of SAML Subjects the IdP supports. -->
