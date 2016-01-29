@@ -3,9 +3,10 @@
   become: True
   vars:
     fully_qualified_service_name: 192.168.33.88
-    # idp_fqdn:  192.168.33.44
+    idp_name: UbuntuNet IdP
     idp_url: https://192.168.33.44
-    idp_entity_id: "{{ idp_url }}/idp/"
+    # idp_entity_id: "{{ idp_url }}/idp/"
+    idp_entity_id: "https://idp.ubuntunet.net/shibboleth"
     idp_scope: ubuntunet.net
     discovery_service_url: https://192.168.33.55/DS/WAYF
     support_email: id@ubuntunet.net
@@ -89,8 +90,8 @@
     
     - name: Copy IdP metadata file
       template: >
-        src=templates/ubuntunet-metadata.xml.j2
-        dest=/etc/shibboleth/ubuntunet-metadata.xml
+        src=templates/idp_dev-metadata.xml.j2
+        dest=/etc/shibboleth/idp_dev-metadata.xml
       notify: restart shibboleth
 
 

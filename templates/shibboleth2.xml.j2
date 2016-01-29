@@ -75,11 +75,12 @@
             helpLocation="/about.html"
             styleSheet="/shibboleth-sp/main.css"/>
 
+
         <!-- Example of remotely supplied batch of signed metadata. -->
         <!--
         <MetadataProvider type="XML" validate="true"
-        uri="http://federation.org/federation-metadata.xml"
-              backingFilePath="federation-metadata.xml" reloadInterval="7200">
+            uri="http://federation.org/federation-metadata.xml"
+            backingFilePath="idp_dev-metadata.xml" reloadInterval="7200">
             <MetadataFilter type="RequireValidUntil" maxValidityInterval="2419200"/>
             <MetadataFilter type="Signature" certificate="fedsigner.pem"/>
             <DiscoveryFilter type="Blacklist" matcher="EntityAttributes" trimTags="true"
@@ -91,7 +92,7 @@
 
         <!-- Example of locally maintained metadata. -->
         
-        <MetadataProvider type="XML" validate="true" file="ubuntunet-metadata.xml"/>
+        <MetadataProvider type="XML" validate="true" file="idp_dev-metadata.xml"/>
         
 
         <!-- Map to extract attributes from SAML assertions. -->
