@@ -41,15 +41,16 @@
             (Set discoveryProtocol to "WAYF" for legacy Shibboleth WAYF support.)
             You can also override entityID on /Login query string, or in RequestMap/htaccess.
             -->
+<!--             
             <SSO entityID="{{ idp_entity_id }}">
               SAML2
             </SSO>
-<!--             
-            <SSO entityID="{{ idp_entity_id }}"
-                 discoveryProtocol="SAMLDS" discoveryURL="{{ discovery_service_url }}">
+ --> 
+            <SSO ECP="true"
+                 discoveryProtocol="SAMLDS" 
+                 discoveryURL="{{ discovery_service_url }}">
               SAML2
             </SSO>
- --> 
 
             <!-- SAML and local-only logout. -->
             <Logout>SAML2 Local</Logout>
@@ -77,10 +78,12 @@
 
 
         <!-- Example of remotely supplied batch of signed metadata. -->
-        <!--
-        <MetadataProvider type="XML" validate="true"
+<!--         
+        <MetadataProvider type="XML" 
+            validate="true"
             uri="http://federation.org/federation-metadata.xml"
-            backingFilePath="idp_dev-metadata.xml" reloadInterval="7200">
+            backingFilePath="idp_dev-metadata.xml" 
+            reloadInterval="7200">
             <MetadataFilter type="RequireValidUntil" maxValidityInterval="2419200"/>
             <MetadataFilter type="Signature" certificate="fedsigner.pem"/>
             <DiscoveryFilter type="Blacklist" matcher="EntityAttributes" trimTags="true"
@@ -88,13 +91,11 @@
               attributeNameFormat="urn:oasis:names:tc:SAML:2.0:attrname-format:uri"
               attributeValue="http://refeds.org/category/hide-from-discovery" />
         </MetadataProvider>
-        -->
+ -->
 
         <!-- Example of locally maintained metadata. -->
-        
         <MetadataProvider type="XML" validate="true" file="idp_dev-metadata.xml"/>
         
-
         <!-- Map to extract attributes from SAML assertions. -->
         <AttributeExtractor type="XML" validate="true" reloadChanges="false" path="attribute-map.xml"/>
 

@@ -8,7 +8,7 @@
     # idp_entity_id: "{{ idp_url }}/idp/"
     idp_entity_id: "https://idp.ubuntunet.net/shibboleth"
     idp_scope: ubuntunet.net
-    discovery_service_url: https://192.168.33.55/DS/WAYF
+    discovery_service_url: http://192.168.33.55:8080/discovery/WAYF
     support_email: id@ubuntunet.net
     admin_email: idp@ubuntunet.net
     # certificate_key_path: /etc/ssl/private/{{ fully_qualified_service_name }}.key
