@@ -94,9 +94,14 @@
  -->
 
         <!-- Example of locally maintained metadata. -->
-        <MetadataProvider type="XML" validate="true" file="idp_dev-metadata.xml"/>
+        <!--<MetadataProvider type="XML" validate="true" file="idp_dev-metadata.xml"/>-->
         
-        <!-- Map to extract attributes from SAML assertions. -->
+        <MetadataProvider type="XML" url="{{ metadata_ur }}" backingFilePath="/etc/shibboleth/idp_dev-metadata.xml">
+            <MetadataFilter type="RequireValidUntil" maxValidityInterval="2419200"/>
+            <!--<MetadataFilter type="Signature" certificate="metadata.crt" verifyName="false"/>-->
+        </MetadataProvider>
+
+    <!-- Map to extract attributes from SAML assertions. -->
         <AttributeExtractor type="XML" validate="true" reloadChanges="false" path="attribute-map.xml"/>
 
         <!-- Use a SAML query if no attributes are supplied during SSO. -->

@@ -11,6 +11,7 @@
     discovery_service_url: http://192.168.33.55:8080/discovery/WAYF
     support_email: id@ubuntunet.net
     admin_email: idp@ubuntunet.net
+    metadata_url: https://192.168.33.44/metadata.xml    
     # certificate_key_path: /etc/ssl/private/{{ fully_qualified_service_name }}.key
     # certificate_cert_path: /etc/ssl/certs/{{ fully_qualified_service_name }}.crt
     # tomcat_version: 7
@@ -93,7 +94,6 @@
         src=templates/idp_dev-metadata.xml.j2
         dest=/etc/shibboleth/idp_dev-metadata.xml
       notify: restart shibboleth
-
 
   handlers:
     - name: restart apache
