@@ -47,7 +47,7 @@
         dest=/etc/apt/sources.list.d/
 
     - name: Refresh Repository
-      apt: update_cache=yes cache_valid_time=36000
+      apt: update_cache=yes
 
 
     # 4. Installation
