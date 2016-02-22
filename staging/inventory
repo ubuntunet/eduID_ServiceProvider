@@ -4,7 +4,7 @@ gcloud_sp ansible_ssh_host=130.211.57.98
 gcloud_sp
 
 [gcloud:vars]
-ansible_user=chris_rohrer
+ansible_user=hydra
 
 [sp]
 gcloud_sp
