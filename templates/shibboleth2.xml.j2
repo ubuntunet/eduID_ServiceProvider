@@ -20,7 +20,7 @@
     -->
 
     <!-- The ApplicationDefaults element is where most of Shibboleth's SAML bits are defined. -->
-    <ApplicationDefaults entityID="https://{{ fully_qualified_service_name }}/shibboleth"
+    <ApplicationDefaults entityID="{{ entity_id }}"
                          REMOTE_USER="eppn persistent-id targeted-id">
 
         <!--
@@ -96,7 +96,7 @@
         <!-- Example of locally maintained metadata. -->
         <!--<MetadataProvider type="XML" validate="true" file="idp_dev-metadata.xml"/>-->
         
-        <MetadataProvider type="XML" url="{{ metadata_ur }}" backingFilePath="/etc/shibboleth/idp_dev-metadata.xml">
+        <MetadataProvider type="XML" url="{{ metadata_url }}" backingFilePath="/etc/shibboleth/idp_dev-metadata.xml">
             <MetadataFilter type="RequireValidUntil" maxValidityInterval="2419200"/>
             <!--<MetadataFilter type="Signature" certificate="metadata.crt" verifyName="false"/>-->
         </MetadataProvider>
