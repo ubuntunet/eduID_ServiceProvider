@@ -61,7 +61,7 @@
 
     # 4. X.509 certificate for SAML message signing/encrypting
     - name: Create self-signed certificate
-      command: shib-keygen -f -u _shibd -h {{ fully_qualified_service_name }} -y 3 -e https://{{ fully_qualified_service_name }}/shibboleth -o /etc/shibboleth/
+      command: shib-keygen -f -u _shibd -h {{ fqdn }} -y 3 -e https://{{ fqdn }}/shibboleth -o /etc/shibboleth/
 
 
     # 5. Shibboleth Configuration

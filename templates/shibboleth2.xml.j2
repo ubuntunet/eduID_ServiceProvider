@@ -96,7 +96,7 @@
         <!-- Example of locally maintained metadata. -->
         <!--<MetadataProvider type="XML" validate="true" file="idp_dev-metadata.xml"/>-->
         
-        <MetadataProvider type="XML" url="{{ metadata_ur }}" backingFilePath="/etc/shibboleth/idp_dev-metadata.xml">
+        <MetadataProvider type="XML" url="{{ metadata_url }}" backingFilePath="/etc/shibboleth/idp_dev-metadata.xml">
             <MetadataFilter type="RequireValidUntil" maxValidityInterval="2419200"/>
             <!--<MetadataFilter type="Signature" certificate="metadata.crt" verifyName="false"/>-->
         </MetadataProvider>
