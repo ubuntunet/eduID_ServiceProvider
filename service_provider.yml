@@ -12,6 +12,8 @@
         - ntp
         - unzip
 
+    # Apache
+
     - name: Install apache2
       apt: pkg=apache2 update_cache=yes cache_valid_time=36000
 
