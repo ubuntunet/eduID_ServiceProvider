@@ -1,4 +1,4 @@
-fqdn: 168.253.216.236
+fqdn: sp.ubuntunet.net
 entity_id: https://{{ fqdn }}/shibboleth
 idp_name: UbuntuNet IdP
 idp_url: https://idp.ubuntunet.net
@@ -8,3 +8,8 @@ discovery_service_url: http://cds.ubuntunet.net:8080/discovery/WAYF
 support_email: id@ubuntunet.net
 admin_email: idp@ubuntunet.net
 metadata_url: https://idp.ubuntunet.net/metadata.xml
+organisation_name: UbuntuNet Alliance
+country_code: MW
+certificate_key_path: /etc/ssl/private/{{ fqdn }}.key
+certificate_cert_path: /etc/ssl/certs/{{ fqdn }}.crt
+certificate_chain_path: /etc/ssl/certs/{{ fqdn }}.crt
