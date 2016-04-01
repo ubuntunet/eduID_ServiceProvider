@@ -98,6 +98,7 @@
         owner=root
         group=ssl-cert
         mode=0600
+      when: (have_web_cert.stat.exists == False) and (have_web_key.stat.exists == False)
 
     ################## End Certificates #######################
 
@@ -136,8 +137,12 @@
 
     # 4. X.509 certificate for SAML message signing/encrypting
     - name: Create self-signed certificate
-      command: shib-keygen -f -u _shibd -h {{ fqdn }} -y 3 -e https://{{ fqdn }}/shibboleth -o /etc/shibboleth/
+      command: shib-keygen -f -u _shibd -h {{ fqdn }} -y 3 -e https://{{ fqdn }}/shibboleth -o /etc/shibboleth/ && touch /etc/shibboleth/signing-certs.created
+      args:
+        creates: /etc/shibboleth/signing-certs.created
 
+    - name: Copy certificate to this machine
+      fetch: src=/etc/shibboleth/sp-cert.pem dest=files/{{ fqdn }}_sp-cert.pem flat=yes
 
     # 5. Shibboleth Configuration
     
