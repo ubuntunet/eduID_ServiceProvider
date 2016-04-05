@@ -1,0 +1,30 @@
+- name: Enable Apache SSL and Rewrite modules
+  command: a2enmod ssl rewrite
+  notify: restart apache
+
+- name: Copy apache2 config file
+  template: >
+    src=apache2.conf.j2
+    dest=/etc/apache2/sites-available/{{ fqdn }}.conf
+  notify: restart apache
+
+- name: Disable default configuration
+  command: a2dissite 000-default
+  notify: restart apache
+
+- name: Enable IdP configuration
+  command: a2ensite {{ fqdn }}
+  notify: restart apache
+
+
+- name: Add default ServerName
+  template: >
+    src=apache2_fqdn.conf.j2
+    dest=/etc/apache2/conf-available/fqdn.conf
+  notify: restart apache
+
+- name: Enable default ServerName
+  command: a2enconf fqdn
+  notify: restart apache
+
+
