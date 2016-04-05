@@ -112,7 +112,9 @@
         state=directory
 
     - name: Download Switch Repository Key
-      get_url: url=http://pkg.switch.ch/switchaai/SWITCHaai-swdistrib.asc dest=/usr/local/dist/
+      get_url: > 
+        url=http://pkg.switch.ch/switchaai/SWITCHaai-swdistrib.asc 
+        dest=/usr/local/dist/SWITCHaai-swdistrib.asc
 
     - name: Add Repository Key
       command: apt-key add /usr/local/dist/SWITCHaai-swdistrib.asc
