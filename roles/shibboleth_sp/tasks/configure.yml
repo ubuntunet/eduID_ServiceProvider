@@ -1,0 +1,25 @@
+# II Configuration
+# https://www.switch.ch/aai/guides/sp/configuration/
+
+# 4. X.509 certificate for SAML message signing/encrypting
+- name: Create self-signed certificate
+  command: shib-keygen -f -u _shibd -h {{ fqdn }} -y 3 -e https://{{ fqdn }}/shibboleth -o /etc/shibboleth/ && touch /etc/shibboleth/signing-certs.created
+  args:
+    creates: /etc/shibboleth/signing-certs.created
+
+- name: Copy certificate to this machine
+  fetch: src=/etc/shibboleth/sp-cert.pem dest=roles/shibboleth_sp/files/{{ fqdn }}_sp-cert.pem flat=yes
+
+# 5. Shibboleth Configuration
+
+- name: Copy Shibboleth config file
+  template: >
+    src=templates/shibboleth2.xml.j2
+    dest=/etc/shibboleth/shibboleth2.xml
+  notify: restart shibboleth
+
+- name: Copy IdP metadata file
+  template: >
+    src=templates/idp_dev-metadata.xml.j2
+    dest=/etc/shibboleth/idp_dev-metadata.xml
+  notify: restart shibboleth
