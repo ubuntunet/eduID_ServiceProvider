@@ -4,6 +4,8 @@ idp_url: https://192.168.33.44
 idp_entity_id: "https://192.168.33.44/shibboleth"
 idp_scope: ubuntunet.net
 discovery_service_url: http://192.168.33.55:8080/discovery/WAYF
-support_email: id@ubuntunet.net
-admin_email: idp@ubuntunet.net
-metadata_url: https://192.168.33.44/metadata.xml
+support_email: support@ubuntunet.net
+admin_email: unida@ubuntunet.net
+federation: unida
+metadata_url: https://192.168.33.99/metadata/federation/{{ federation }}/metadata.xml
+#metadata_url: https://192.168.33.44/metadata.xml
