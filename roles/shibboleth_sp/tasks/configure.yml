@@ -14,12 +14,12 @@
 
 - name: Copy Shibboleth config file
   template: >
-    src=templates/shibboleth2.xml.j2
+    src=shibboleth2.xml.j2
     dest=/etc/shibboleth/shibboleth2.xml
   notify: restart shibboleth
 
 - name: Copy IdP metadata file
   template: >
-    src=templates/idp_dev-metadata.xml.j2
-    dest=/etc/shibboleth/idp_dev-metadata.xml
+    src={{ metadata_file }}.j2
+    dest=/etc/shibboleth/{{ metadata_file }}
   notify: restart shibboleth

@@ -82,7 +82,7 @@
         <MetadataProvider type="XML" 
             validate="true"
             uri="http://federation.org/federation-metadata.xml"
-            backingFilePath="idp_dev-metadata.xml" 
+            backingFilePath="{{ metadata_file }}" 
             reloadInterval="7200">
             <MetadataFilter type="RequireValidUntil" maxValidityInterval="2419200"/>
             <MetadataFilter type="Signature" certificate="fedsigner.pem"/>
@@ -94,9 +94,11 @@
  -->
 
         <!-- Example of locally maintained metadata. -->
-        <!--<MetadataProvider type="XML" validate="true" file="idp_dev-metadata.xml"/>-->
+        <!--
+            <MetadataProvider type="XML" validate="true" file="metadata.xml"/>
+        -->
         
-        <MetadataProvider type="XML" url="{{ metadata_url }}" backingFilePath="/etc/shibboleth/idp_dev-metadata.xml">
+        <MetadataProvider type="XML" url="{{ metadata_url }}" backingFilePath="/etc/shibboleth/{{ metadata_file }}">
             <MetadataFilter type="RequireValidUntil" maxValidityInterval="2419200"/>
             <!--<MetadataFilter type="Signature" certificate="metadata.crt" verifyName="false"/>-->
         </MetadataProvider>
