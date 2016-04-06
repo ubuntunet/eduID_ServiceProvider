@@ -4,20 +4,20 @@
   become: False
   local_action:
     module: stat
-    path: "files/{{ fqdn }}.crt"
+    path: "roles/webserver/files/{{ fqdn }}.crt"
   register: have_web_cert
 
 - name: Check if there is a website key locally
   become: False
   local_action:
     module: stat
-    path: "files/{{ fqdn }}.key"
+    path: "roles/webserver/files/{{ fqdn }}.key"
   register: have_web_key
 
 ################## Then < Copy existing certificates to remote #######################
 - name: Copy TLS key
   copy: > 
-    src=files/{{ fqdn }}.key 
+    src={{ fqdn }}.key 
     dest={{ certificate_key_path }}
     owner=root
     group=ssl-cert
@@ -27,7 +27,7 @@
 
 - name: Copy TLS certificate
   copy: > 
-    src=files/{{ fqdn }}.crt 
+    src={{ fqdn }}.crt 
     dest={{ certificate_cert_path }}
   when: have_web_cert.stat.exists == True
   notify: restart apache
