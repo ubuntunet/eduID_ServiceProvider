@@ -8,7 +8,10 @@
     creates: /etc/shibboleth/signing-certs.created
 
 - name: Copy certificate to this machine
-  fetch: src=/etc/shibboleth/sp-cert.pem dest=roles/shibboleth_sp/files/{{ fqdn }}_sp-cert.pem flat=yes
+  fetch: >
+    src=/etc/shibboleth/sp-cert.pem 
+    dest=roles/shibboleth_sp/files/{{ fqdn }}_sp-cert.pem 
+    flat=yes
 
 # 5. Shibboleth Configuration
 
@@ -18,8 +21,14 @@
     dest=/etc/shibboleth/shibboleth2.xml
   notify: restart shibboleth
 
-- name: Copy IdP metadata file
-  template: >
-    src={{ metadata_file }}.j2
+- name: Download Metadata Backup File from RR 
+  get_url: > 
+    url={{ metadata_url }}
     dest=/etc/shibboleth/{{ metadata_file }}
   notify: restart shibboleth
+
+# - name: Copy IdP metadata file
+#   template: >
+#     src={{ metadata_file }}.j2
+#     dest=/etc/shibboleth/{{ metadata_file }}
+#   notify: restart shibboleth

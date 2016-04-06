@@ -25,7 +25,7 @@
 
 - name: Copy Repository
   copy: > 
-    src=files/SWITCHaai-swdistrib.list 
+    src=SWITCHaai-swdistrib.list 
     dest=/etc/apt/sources.list.d/
 
 - name: Refresh Repository

@@ -9,4 +9,4 @@ admin_email: unida@ubuntunet.net
 federation: unida
 #metadata_url: https://192.168.33.44/metadata.xml
 metadata_url: https://192.168.33.99/metadata/federation/{{ federation }}/metadata.xml
-metadata_file: static-metadata.xml
+metadata_file: metadata.xml
