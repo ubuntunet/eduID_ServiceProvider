@@ -1,0 +1,15 @@
+- name: Copy index.html page
+  copy: >
+    src=index.html
+    dest=/var/www/html/index.html
+
+- name: Copy Logo
+  copy: >
+    src=logo-unida.png
+    dest=/var/www/html/logo-unida.png
+
+- name: Copy index.html page
+  copy: >
+    src=response.html
+    dest=/var/www/html/response.html
+
