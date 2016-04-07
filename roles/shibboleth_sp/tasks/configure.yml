@@ -3,9 +3,9 @@
 
 # 4. X.509 certificate for SAML message signing/encrypting
 - name: Create self-signed certificate
-  command: shib-keygen -f -u _shibd -h {{ fqdn }} -y 3 -e https://{{ fqdn }}/shibboleth -o /etc/shibboleth/ && touch /etc/shibboleth/signing-certs.created
+  command: shib-keygen -f -u _shibd -h {{ fqdn }} -y 3 -e https://{{ fqdn }}/shibboleth -o /etc/shibboleth/
   args:
-    creates: /etc/shibboleth/signing-certs.created
+    creates: /etc/shibboleth/sp-key.pem
 
 - name: Copy certificate to this machine
   fetch: >
@@ -21,14 +21,22 @@
     dest=/etc/shibboleth/shibboleth2.xml
   notify: restart shibboleth
 
-- name: Download Metadata Backup File from RR 
-  get_url: > 
-    url={{ metadata_url }}
-    dest=/etc/shibboleth/{{ metadata_file }}
-  notify: restart shibboleth
 
 # - name: Copy IdP metadata file
 #   template: >
 #     src={{ metadata_file }}.j2
 #     dest=/etc/shibboleth/{{ metadata_file }}
 #   notify: restart shibboleth
+
+- name: Download Metadata Backup File from RR 
+  get_url: > 
+    url={{ metadata_url }}
+    dest=/etc/shibboleth/{{ metadata_file }}
+  notify: restart shibboleth
+
+- name: Hand /etc/shibboleth over to the _shibd user
+  file: >
+    path=/etc/shibboleth
+    owner=_shibd
+    recurse=yes 
+
