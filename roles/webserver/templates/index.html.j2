@@ -20,9 +20,11 @@
     <!-- Add your site or application content here -->
     <h2>Direct Login URLs</h2>
 
-    <a href="https://sp.ubuntunet.net/Shibboleth.sso/Login?entityID=https%3A%2F%2Fidp.ubuntunet.net%2Fshibboleth&target=https%3A%2F%2Fsp.ubuntunet.net%2FShibboleth.sso%2FSession">Login via UbuntuNet Alliance (unIDa)</a>
+    <a href="https://{{ fqdn }}/Shibboleth.sso/Login?entityID={{ idp_url }}%2Fshibboleth&target=https%3A%2F%2F{{ fqdn }}%2FShibboleth.sso%2FSession">Login via UbuntuNet Alliance (unIDa)</a>
 
+<!--     <a href="https://{{ fqdn }}/Shibboleth.sso/Login?entityID=https%3A%2F%2Fidp.ubuntunet.net%2Fshibboleth&target=https%3A%2F%2F{{ fqdn }}%2FShibboleth.sso%2FSession">Login via UbuntuNet Alliance (unIDa)</a>
 
+ -->
 
 
     <script src="//ajax.googleapis.com/ajax/libs/jquery/1.10.2/jquery.min.js"></script>
