@@ -7,6 +7,5 @@ discovery_service_url: http://cds.ubuntunet.net:8080/discovery/WAYF
 support_email: support@ubuntunet.net
 admin_email: unida@ubuntunet.net
 federation: unida
-#metadata_url: https://idp.ubuntunet.net/metadata.xml
 metadata_url: https://rr.ubuntunet.net/metadata/federation/{{ federation }}/metadata.xml
 metadata_file: metadata.xml
