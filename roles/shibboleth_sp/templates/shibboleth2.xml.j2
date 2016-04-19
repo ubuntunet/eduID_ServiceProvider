@@ -62,7 +62,7 @@
             <Handler type="Status" Location="/Status" acl="127.0.0.1 ::1"/>
 
             <!-- Session diagnostic service. -->
-            <Handler type="Session" Location="/Session" showAttributeValues="false"/>
+            <Handler type="Session" Location="/Session" showAttributeValues={{ show_attribute_values }}/>
 
             <!-- JSON feed of discovery information. -->
             <Handler type="DiscoveryFeed" Location="/DiscoFeed"/>
@@ -106,7 +106,7 @@
         </MetadataProvider>
         -->
 
-    <!-- Map to extract attributes from SAML assertions. -->
+        <!-- Map to extract attributes from SAML assertions. -->
         <AttributeExtractor type="XML" 
             validate="true" 
             reloadChanges="false" 

@@ -9,3 +9,4 @@ admin_email: unida@ubuntunet.net
 federation: unida
 metadata_url: https://rr.ubuntunet.net/metadata/federation/{{ federation }}/metadata.xml
 metadata_file: metadata.xml
+show_attribute_values: "false" 
