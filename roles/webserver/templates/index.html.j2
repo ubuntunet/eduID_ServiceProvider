@@ -11,20 +11,39 @@
       <meta name="viewport" content="width=device-width, initial-scale=1">
 
       <!-- Place favicon.ico and apple-touch-icon.png in the root directory -->
+
+      <!-- JQuery hosted by Google -->
+<!-- 
+      <script src="//ajax.googleapis.com/ajax/libs/jquery/1.10.2/jquery.min.js" type="text/javascript"></script>
+ -->
+      <!-- DiscoJuice hosted by UNINETT at discojuice.org -->
+      <script type="text/javascript" src="https://cdn.discojuice.org/discojuice-stable.min.js"></script>
+      <link rel="stylesheet" type="text/css" href="https://cdn.discojuice.org/css/discojuice.css" />
+      <script type="text/javascript">
+        DiscoJuice.Hosted.setup(
+          {
+            "target": "a.login-btn",
+            "title": "Example showcase service",
+            "spentityid": "https://bridge.uninett.no/saml2/entityid",
+            "responseurl": "http://bridge.uninett.no/response.html",
+            "redirectURL": "http://bridge.uninett.no/login?idp=",
+            "feeds": ["edugain", "kalmar", "feide"]
+          }
+        );
+      </script>
   </head>
   <body>
     <!--[if lt IE 7]>
         <p class="browsehappy">You are using an <strong>outdated</strong> browser. Please <a href="http://browsehappy.com/">upgrade your browser</a> to improve your experience.</p>
     <![endif]-->
 
+    <h2>Login with embedded IdP Selector Popup</h2>
+    <a href="/login" class="login-btn">Login</a>
+
     <!-- Add your site or application content here -->
     <h2>Direct Login URLs</h2>
 
     <a href="https://{{ fqdn }}/Shibboleth.sso/Login?entityID={{ idp_url }}%2Fshibboleth&target=https%3A%2F%2F{{ fqdn }}%2FShibboleth.sso%2FSession">Login via UbuntuNet Alliance (unIDa)</a>
-
-<!--     <a href="https://{{ fqdn }}/Shibboleth.sso/Login?entityID=https%3A%2F%2Fidp.ubuntunet.net%2Fshibboleth&target=https%3A%2F%2F{{ fqdn }}%2FShibboleth.sso%2FSession">Login via UbuntuNet Alliance (unIDa)</a>
-
- -->
 
 
     <script src="//ajax.googleapis.com/ajax/libs/jquery/1.10.2/jquery.min.js"></script>
