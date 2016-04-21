@@ -62,7 +62,7 @@
             <Handler type="Status" Location="/Status" acl="127.0.0.1 ::1"/>
 
             <!-- Session diagnostic service. -->
-            <Handler type="Session" Location="/Session" showAttributeValues={{ show_attribute_values }}/>
+            <Handler type="Session" Location="/Session" showAttributeValues="{{ show_attribute_values | lower }}"/>
 
             <!-- JSON feed of discovery information. -->
             <Handler type="DiscoveryFeed" Location="/DiscoFeed"/>
