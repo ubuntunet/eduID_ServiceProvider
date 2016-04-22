@@ -8,8 +8,23 @@
     src=logo-unida.png
     dest=/var/www/html/logo-unida.png
 
-- name: Copy index.html page
+- name: Copy response.html page
   copy: >
     src=response.html
     dest=/var/www/html/response.html
+
+- name: Create secured directory
+  file: >
+    path=/var/www/html/secure
+    state=directory
+
+- name: Copy secure index.html page
+  copy: >
+    src=secure_index.html
+    dest=/var/www/html/secure/index.html
+
+- name: Copy congrats pic
+  copy: >
+    src=congrats-to-you.jpg
+    dest=/var/www/html/secure/congrats-to-you.jpg
 

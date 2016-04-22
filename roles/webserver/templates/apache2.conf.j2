@@ -14,8 +14,15 @@
   CustomLog /var/log/apache2/{{ fqdn }}.access.log combined
   ErrorLog /var/log/apache2/{{ fqdn }}.error.log
 
-
   DocumentRoot /var/www/html
+
+  <Directory "/var/www/html/secure">
+    Options Indexes FollowSymLinks
+
+    AuthType shibboleth
+    require shibboleth
+    ShibRequestSetting requireSession true
+  </Directory>
 
   SSLEngine On
   SSLCipherSuite HIGH:MEDIUM:!aNULL:!kRSA:!MD5:!RC4
