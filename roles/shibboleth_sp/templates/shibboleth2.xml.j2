@@ -41,13 +41,15 @@
             (Set discoveryProtocol to "WAYF" for legacy Shibboleth WAYF support.)
             You can also override entityID on /Login query string, or in RequestMap/htaccess.
             -->
-<!--             
-            <SSO entityID="{{ idp_entity_id }}">
+
+            <!--
+            <SSO entityID="[IDP_ENTITY_ID]">
               SAML2
             </SSO>
- --> 
+            -->
+
             <SSO ECP="true"
-                 discoveryProtocol="SAMLDS" 
+                 discoveryProtocol="SAMLDS"
                  discoveryURL="{{ discovery_service_url }}">
               SAML2
             </SSO>
@@ -78,13 +80,13 @@
 
 
         <!-- Example of remotely supplied batch of signed metadata. -->
-        <MetadataProvider type="XML" 
+        <MetadataProvider type="XML"
             validate="true"
-            url="{{ metadata_url }}" 
-            backingFilePath="/etc/shibboleth/{{ metadata_file }}" 
+            url="{{ metadata_url }}"
+            backingFilePath="/etc/shibboleth/{{ metadata_file }}"
             reloadInterval="7200">
             <MetadataFilter type="RequireValidUntil" maxValidityInterval="2419200"/>
-<!-- 
+<!--
             <MetadataFilter type="Signature" certificate="fedsigner.pem"/>
             <DiscoveryFilter type="Blacklist" matcher="EntityAttributes" trimTags="true"
               attributeName="http://macedir.org/entity-category"
@@ -98,26 +100,26 @@
         <!--
             <MetadataProvider type="XML" validate="true" file="metadata.xml"/>
         -->
-        
+
         <!--
-        <MetadataProvider type="XML" 
+        <MetadataProvider type="XML"
             url="{{ metadata_url }}" backingFilePath="/etc/shibboleth/{{ metadata_file }}">
             <MetadataFilter type="RequireValidUntil" maxValidityInterval="2419200"/>
         </MetadataProvider>
         -->
 
         <!-- Map to extract attributes from SAML assertions. -->
-        <AttributeExtractor type="XML" 
-            validate="true" 
-            reloadChanges="false" 
+        <AttributeExtractor type="XML"
+            validate="true"
+            reloadChanges="false"
             path="attribute-map.xml"/>
 
         <!-- Use a SAML query if no attributes are supplied during SSO. -->
         <AttributeResolver type="Query" subjectMatch="true"/>
 
         <!-- Default filtering policy for recognized attributes, lets other data pass. -->
-        <AttributeFilter type="XML" 
-            validate="true" 
+        <AttributeFilter type="XML"
+            validate="true"
             path="attribute-policy.xml"/>
 
         <!-- Simple file-based resolver for using a single keypair. -->
