@@ -25,11 +25,14 @@
         <p class="browsehappy">You are using an <strong>outdated</strong> browser. Please <a href="https://browsehappy.com/">upgrade your browser</a> to improve your experience.</p>
     <![endif]-->
 
-    <h2>Login with embedded IdP Selector Popup</h2>
-    <a href="/login" class="login-btn">Login</a>
+    <h2>Login with embedded Discovyer Service</h2>
+    <a href="/login" class="login-btn">Login via eDS</a>
 
-    <h2>Login with specific Identity Provider (IdP)</h2>
-    <a href="https://{{ fqdn }}/Shibboleth.sso/Login?entityID=https:%3A%2F%2F[IDP_FQDN]%2Fshibboleth&target=https%3A%2F%2F{{ fqdn }}%2FShibboleth.sso%2FSession">Login via UbuntuNet Alliance (unIDa)</a>
+    <h2>Login with central Discovery Service</h2>
+    <a href="{{ disco_juice_url }}/?entityID=https:%3A%2F%2F{{ fqdn }}%2Fshibboleth&target=https%3A%2F%2F{{ fqdn }}%2FShibboleth.sso%2FSession">Login via cDS</a>
+
+    <h2>Login directly with Identity Provider (IdP)</h2>
+    <a href="https://{{ fqdn }}/Shibboleth.sso/Login?entityID=https%3A%2F%2F{{ example_idp_fqdn }}%2Fshibboleth&target=https%3A%2F%2F{{ fqdn }}%2FShibboleth.sso%2FSession">Login via UbuntuNet Alliance (unIDa)</a>
 
     <h2>Force login by accessing a secured website</h2>
     <a href="secure">Access secure content</a>
@@ -50,10 +53,10 @@
             {
               "target": "a.login-btn",
               "title": "{{ sp_name }}",
+              // "feeds": ["edugain", "kalmar", "feide"],
               "spentityid": "{{ entity_id }}",
               "responseurl": "//{{ fqdn }}/response.html",
-              "redirectURL": "//bridge.uninett.no/login?idp=",
-              "feeds": ["edugain", "kalmar", "feide"]
+              "redirectURL": "//{{ fqdn }}/login?idp="
             }
           );
         });
