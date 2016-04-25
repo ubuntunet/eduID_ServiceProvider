@@ -23,6 +23,37 @@
 
     <div class="container">
 
+      <img src="hands-on.png" class="pull-right">
+
+      <h1>Task 1 - Extract Attributes</h1>
+
+      <p>
+        Additional information about attribute extraction:<br />
+        <a href="https://wiki.shibboleth.net/confluence/display/SHIB2/NativeSPAddAttribute">https://wiki.shibboleth.net/confluence/display/SHIB2/NativeSPAddAttribute</a>
+      </p>
+
+      <p>
+        Yesterday we learned how to release attributes on the IdP side. In this task you'll see how to reclaim and map these attributes on the receiving Service Provider side.
+      </p>
+
+      <p>
+        Not surprisingly, the information for this process can be found in a file called <code>/roles/sp/templates/attribute-map.xml.j2</code>. If you open it, you'll find it to be very similiar to the attributes files seen yesterday.
+      </p>
+
+      <p>
+        Add an entry for the displayName to the attribute map. You will find a corresponding entry commented out further down in the file. So, it is just a question of enabling this attribute.
+      </p>
+      <p>
+        Provision the SP again (<code>vagrant provision</code>) and make sure that the attribute shows up after login in using the button below.
+      </p>
+
+      <p>
+        Continue to the next exercise:< br />
+        <code>git checkout task2</code>
+      </p>
+
+      <hr />
+
       <h2>Get Attributes, login directly</h2>
       <a class="btn btn-primary" role="button" href="https://{{ fqdn }}/Shibboleth.sso/Login?entityID=https%3A%2F%2F{{ example_idp_fqdn }}%2Fshibboleth&target=https%3A%2F%2F{{ fqdn }}%2FShibboleth.sso%2FSession">Login via IdP</a>
 
