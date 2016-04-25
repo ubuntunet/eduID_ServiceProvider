@@ -25,31 +25,38 @@
 
       <img src="hands-on.png" class="pull-right">
 
-      <h1>Task 2 - Protect Resources</h1>
+      <h1>Task 3 - IdP & SP: The Full Monty</h1>
 
       <p>
-        Additional information about attribute extraction:<br />
-        <a href="https://wiki.shibboleth.net/confluence/display/SHIB2/NativeSPAddAttribute">https://wiki.shibboleth.net/confluence/display/SHIB2/NativeSPAddAttribute</a>
+        In this last exercise, we want to give only students access to the /secure folder.  
+        There is one attribute that already exists in the LDAP of our IdP and that we can use to find out if a user is a student. It's called <code>eduPersonAffiliation</code>.
       </p>
 
       <p>
-        Yesterday we learned how to release attributes on the IdP side. In this task you'll see how to reclaim and map these attributes on the receiving Service Provider side.
+        Do all the necessary changes to allow the user mstuder to access the folder, while lclerk will be denied access.
       </p>
 
-      <p>
-        Not surprisingly, the information for this process can be found in a file called <code>/roles/sp/templates/attribute-map.xml.j2</code>. If you open it, you'll find it to be very similiar to the attributes files seen yesterday.
-      </p>
+      <p>Some hints:</p>
+      <ul>
+        <li>
+          <code>attribute-resolver.xml</code> and <code>attribute-filter.xml</code> need to adapted on the Identity Provider side
+        </li>
+        <li>
+          <code>attribute-map.xml</code> on the Service Provider side
+        </li>
+        <li>
+          <code>apache2.conf</code> on the SP side as well
+        </li>
+        <li>
+          Don't forget to re-provision the system after any changes<br />
+          <code>vagrant provision</code>
+        </li>
+      </ul>
 
       <p>
-        Add an entry for the displayName to the attribute map. You will find a corresponding entry commented out further down in the file. So, it is just a question of enabling this attribute.
-      </p>
-      <p>
-        Provision the SP again (<code>vagrant provision</code>) and make sure that the attribute shows up after login in using the button below.
-      </p>
-
-      <p>
-        Continue to the next exercise:< br />
-        <code>git checkout task2</code>
+        Looking for the solution?
+        Switching back to the develop branch, will release the <code>eduPersonAffiliation</code> attribute on the Service Provider side:< br />
+        <code>git checkout develop</code>
       </p>
 
       <hr />
