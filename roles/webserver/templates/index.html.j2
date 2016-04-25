@@ -25,53 +25,79 @@
 
       <h2>Get Attributes, login directly</h2>
       <a class="btn btn-primary" role="button" href="https://{{ fqdn }}/Shibboleth.sso/Login?entityID=https%3A%2F%2F{{ example_idp_fqdn }}%2Fshibboleth&target=https%3A%2F%2F{{ fqdn }}%2FShibboleth.sso%2FSession">Login via IdP</a>
-<!-- 
-      <hr />
 
-      <h2>Embedded Discovery Service (eDS)</h2>
-      <a href="/login" class="login-btn btn btn-primary">Login via eDS</a>
- -->
       <hr />
 
       <h2>Force login by accessing a secured website</h2>
       <a class="btn btn-primary" role="button" href="secure">Access secure content</a>
 
+<!--       <hr />
+
+      <h2>Embedded Discovery Service (eDS)</h2>
+      <a href="/login" class="login-btn btn btn-primary">Login via eDS</a>
 
 
       <script src="//ajax.googleapis.com/ajax/libs/jquery/1.10.2/jquery.min.js"></script>
       <script>window.jQuery || document.write('<script src="js/vendor/jquery-1.10.2.min.js"><\/script>')</script>
 
-
+ -->
       <!-- DiscoJuice hosted by UNINETT at discojuice.org -->
-      <script type="text/javascript" src="//cdn.discojuice.org/engine/discojuice-dev.min.js"></script>
+<!--       <script type="text/javascript" src="//cdn.discojuice.org/engine/discojuice-stable.min.js"></script>
+ -->
+<!-- 
+      <script type="text/javascript">
+
+        // DiscoJuice.Hosted.setup(
+        //   {
+        //     "target": "a.login-btn",
+        //     "title": "My service provider",
+        //     "spentityid": "https://192.168.33.88/shibboleth",
+        //     "responseurl": "https://192.168.33.88/response.html",
+        //     "redirectURL": "https://192.168.33.88/Shibboleth.sso/Login?target=https://192.168.33.88/Shibboleth.sso/Session&entityID=",
+        //     "feed": ["edugain"]
+        //   }
+        // );
 
 
-        <script type="text/javascript">
+        $(document).ready(function() {
 
-          $("document").ready(function() {
-            DiscoJuice.Hosted.setup(
-              {
-                "target": "a.login-btn",
-                "title": "{{ sp_name }}",
-                // "feeds": ["edugain", "kalmar", "feide"],
-                "spentityid": "{{ entity_id }}",
-                "responseurl": "//{{ fqdn }}/response.html",
-                "redirectURL": "//{{ fqdn }}/secure?idp="
-              }
-            );
-          });
-        </script>
+          var djc = DiscoJuice.Hosted.getConfig(
+             "{{ sp_name }}",
+             "{{ entity_id }}",
+             "https://{{ fqdn }}/response.html", [], 
+             "https://{{ fqdn }}/Shibboleth.sso/Login?target=https://{{ fqdn }}/Shibboleth.sso/Session&entityID="
+          );
 
-        <!-- Google Analytics: change UA-XXXXX-X to be your site's ID. -->
+
+          djc.inlinemetadata = [
+            {
+              'entityID': "{{ example_idp_entity_id }}",
+              'title': 'FedApps',
+              'icon': 'openidp.png',
+              'descr':'IdP for FedApps Training',
+              'country':'TZ',
+              'geo':null,
+              'weight':-5,
+              'keywords': ['UbuntuNet', 'Alliance', 'unIDA', 'FedApps']
+            }
+          ];
+
+
+          $("a.login-btn").DiscoJuice(djc);    
+        });
+        
+      </script>
+ -->
+      <!-- Google Analytics: change UA-XXXXX-X to be your site's ID. -->
 <!--
-        <script>
-            (function(b,o,i,l,e,r){b.GoogleAnalyticsObject=l;b[l]||(b[l]=
-            function(){(b[l].q=b[l].q||[]).push(arguments)});b[l].l=+new Date;
-            e=o.createElement(i);r=o.getElementsByTagName(i)[0];
-            e.src='//www.google-analytics.com/analytics.js';
-            r.parentNode.insertBefore(e,r)}(window,document,'script','ga'));
-            ga('create','UA-XXXXX-X');ga('send','pageview');
-        </script>
+      <script>
+          (function(b,o,i,l,e,r){b.GoogleAnalyticsObject=l;b[l]||(b[l]=
+          function(){(b[l].q=b[l].q||[]).push(arguments)});b[l].l=+new Date;
+          e=o.createElement(i);r=o.getElementsByTagName(i)[0];
+          e.src='//www.google-analytics.com/analytics.js';
+          r.parentNode.insertBefore(e,r)}(window,document,'script','ga'));
+          ga('create','UA-XXXXX-X');ga('send','pageview');
+      </script>
 -->
     </div>
   </body>
