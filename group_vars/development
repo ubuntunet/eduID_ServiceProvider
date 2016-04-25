@@ -1,7 +1,10 @@
 sp_name: Test Service Provider - Dev
 fqdn: 192.168.33.88
-discovery_service_url: http://192.168.33.55:8080/discovery/WAYF
-disco_juice_url: http://192.168.33.55
+
+default_ds_url: http://192.168.33.55:8080/discovery/WAYF
+central_ds_url: http://192.168.33.55
+embedded_ds_url: https://{{ fqdn }}/login
+
 support_email: unida@ubuntunet.net
 admin_email: unida@ubuntunet.net
 federation: unida-test

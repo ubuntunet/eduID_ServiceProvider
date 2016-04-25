@@ -1,7 +1,9 @@
 sp_name: Test Service Provider - Prod
 fqdn: sp.ubuntunet.net
-discovery_service_url: http://cds.ubuntunet.net:8080/discovery/WAYF
-disco_juice_url: http://cds.ubuntunet.net
+
+default_ds_url: http://cds.ubuntunet.net:8080/discovery/WAYF
+central_ds_url: http://cds.ubuntunet.net
+
 support_email: unida@ubuntunet.net
 admin_email: unida@ubuntunet.net
 federation: unida
