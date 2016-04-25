@@ -4,7 +4,7 @@
 
   roles:
     - webserver
-    - shibboleth_sp
+    - sp
 
   handlers:
   - name: restart apache

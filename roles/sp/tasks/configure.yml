@@ -10,7 +10,7 @@
 - name: Copy certificate to this machine
   fetch: >
     src=/etc/shibboleth/sp-cert.pem 
-    dest=roles/shibboleth_sp/files/{{ fqdn }}_sp-cert.pem 
+    dest=roles/sp/files/{{ fqdn }}_sp-cert.pem 
     flat=yes
 
 # 5. Shibboleth Configuration
