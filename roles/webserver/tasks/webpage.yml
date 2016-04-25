@@ -28,3 +28,8 @@
     src=congrats-to-you.jpg
     dest=/var/www/html/secure/congrats-to-you.jpg
 
+- name: Copy hands-on pic
+  copy: >
+    src=hands-on.png
+    dest=/var/www/html/hands-on.png
+
