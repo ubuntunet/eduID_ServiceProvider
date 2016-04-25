@@ -8,11 +8,6 @@
     src=logo-unida.png
     dest=/var/www/html/logo-unida.png
 
-- name: Copy discovery.html page
-  copy: >
-    src=discovery.html
-    dest=/var/www/html/discovery.html
-
 - name: Copy response.html page
   copy: >
     src=response.html
