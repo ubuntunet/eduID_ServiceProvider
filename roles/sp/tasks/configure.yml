@@ -30,7 +30,7 @@
 
 - name: Copy Federation Metadata signer certificate
   copy: >
-    src=fedsigner.pem
+    src=fedsigner
     dest=/etc/shibboleth/fedsigner.pem
   notify: restart shibboleth
 
