@@ -7,13 +7,13 @@
   copy: > 
     src={{ fqdn }}_sp-key 
     dest=/etc/shibboleth/sp-key.pem
-  when: have_sign_key.stat.exists == True
+  # when: have_sign_key.stat.exists == True
 
 - name: Copy signing certificate
   copy: > 
     src={{ fqdn }}_sp-cert
     dest=/etc/shibboleth/sp-cert.pem
-  when: have_sign_cert.stat.exists == True
+  # when: have_sign_cert.stat.exists == True
 
 
 # 4. X.509 certificate for SAML message signing/encrypting
