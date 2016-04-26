@@ -28,28 +28,18 @@
       <h1>Task 2 - Protect Resources</h1>
 
       <p>
-        Additional information about attribute extraction:<br />
-        <a href="https://wiki.shibboleth.net/confluence/display/SHIB2/NativeSPAddAttribute">https://wiki.shibboleth.net/confluence/display/SHIB2/NativeSPAddAttribute</a>
+        Additional information about how to define access to specific web resource:<br />
+        <a href="https://wiki.shibboleth.net/confluence/display/SHIB2/NativeSPhtaccess">https://wiki.shibboleth.net/confluence/display/SHIB2/NativeSPhtaccess</a><br />
+        Have a look on this page if you need more information for solving the task below.
       </p>
 
-      <p>
-        Yesterday we learned how to release attributes on the IdP side. In this task you'll see how to reclaim and map these attributes on the receiving Service Provider side.
-      </p>
-
-      <p>
-        Not surprisingly, the information for this process can be found in a file called <code>/roles/sp/templates/attribute-map.xml.j2</code>. If you open it, you'll find it to be very similiar to the attributes files seen yesterday.
-      </p>
-
-      <p>
-        Add an entry for the displayName to the attribute map. You will find a corresponding entry commented out further down in the file. So, it is just a question of enabling this attribute.
-      </p>
       <p>
         Provision the SP again (<code>vagrant provision</code>) and make sure that the attribute shows up after login in using the button below.
       </p>
 
       <p>
         Continue to the next exercise:< br />
-        <code>git checkout task2</code>
+        <code>git checkout task3</code>
       </p>
 
       <hr />
