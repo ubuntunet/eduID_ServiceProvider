@@ -9,5 +9,5 @@ ansible_user=ubuntu
 [sp]
 wingu_sp
 
-[production:children]
+[simon:children]
 sp
