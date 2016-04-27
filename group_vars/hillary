@@ -1,0 +1,15 @@
+sp_name: Test Service Provider - Hillary
+fqdn: 168.253.217.50
+
+default_ds_url: http://168.253.217.48:8080/discovery/WAYF
+central_ds_url: http://168.253.217.48
+
+support_email: unida@ubuntunet.net
+admin_email: unida@ubuntunet.net
+federation: unida
+metadata_url: https://rr.ubuntunet.net/metadata/federation/{{ federation }}/metadata.xml
+metadata_file: metadata.xml
+show_attribute_values: false
+
+example_idp_fqdn: 168.253.217.47
+example_idp_entity_id: https://{{ example_idp_fqdn }}/shibboleth
