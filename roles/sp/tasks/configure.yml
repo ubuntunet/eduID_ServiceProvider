@@ -28,11 +28,24 @@
 #     dest=/etc/shibboleth/{{ metadata_file }}
 #   notify: restart shibboleth
 
-- name: Copy Federation Metadata signer certificate
-  copy: >
-    src=fedsigner.pem
-    dest=/etc/shibboleth/fedsigner.pem
+# - name: Copy Federation Metadata signer certificate
+#   copy: >
+#     src=fedsigner.pem
+#     dest=/etc/shibboleth/fedsigner.pem
+#   notify: restart shibboleth
+
+- name: Copy attribute-map file
+  template: >
+    src=attribute-map.xml.j2
+    dest=/etc/shibboleth/attribute-map.xml
   notify: restart shibboleth
+
+- name: Copy attribute-policy file
+  template: >
+    src=attribute-policy.xml.j2
+    dest=/etc/shibboleth/attribute-policy.xml
+  notify: restart shibboleth
+
 
 - name: Download Metadata Backup File from RR 
   get_url: > 
