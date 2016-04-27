@@ -29,13 +29,20 @@
 
       <p>
         Additional information about how to define access to specific web resource:<br />
+        <a href="https://wiki.shibboleth.net/confluence/display/SHIB2/NativeSPApacheConfig">https://wiki.shibboleth.net/confluence/display/SHIB2/NativeSPApacheConfig</a><br />
         <a href="https://wiki.shibboleth.net/confluence/display/SHIB2/NativeSPhtaccess">https://wiki.shibboleth.net/confluence/display/SHIB2/NativeSPhtaccess</a><br />
-        Have a look on this page if you need more information for solving the task below.
       </p>
 
       <p>
-        Provision the SP again (<code>vagrant provision</code>) and make sure that the attribute shows up after login in using the button below.
+        You'll find a <code>/var/www/html/secure</code> directory in the <code>apache2.conf.j2</code> file.
       </p>
+      <p>
+        Protect this directory from being accessed by a user without a valid Shibboleth session. You can check if your solution is working by clicking on the "Access secure content" button below. If you managed to protect your resource, you should get redirect to the IdP when clicking it.
+      </p>
+
+      <p>
+        As always you can also try out different solution directly in the virtual machine by <code>vagrant ssh</code> into it. You find the file under <code>/etc/apache2/sites-enabled/192.168.33.88.conf</code>. Don't forget to restart the Apache service after changing this file.
+        </p>
 
       <p>
         Continue to the next exercise:< br />
