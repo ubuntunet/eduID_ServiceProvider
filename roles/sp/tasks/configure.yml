@@ -38,6 +38,18 @@
     dest=/etc/shibboleth/shibboleth2.xml
   notify: restart shibboleth
 
+- name: Copy attribute-map file
+  template: >
+    src=attribute-map.xml.j2
+    dest=/etc/shibboleth/attribute-map.xml
+  notify: restart shibboleth
+
+- name: Copy attribute-policy file
+  template: >
+    src=attribute-policy.xml.j2
+    dest=/etc/shibboleth/attribute-policy.xml
+  notify: restart shibboleth
+
 
 # - name: Copy IdP metadata file
 #   template: >
