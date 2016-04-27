@@ -1,4 +1,6 @@
 entity_id: https://{{ fqdn }}/shibboleth
+embedded_ds_url: https://{{ fqdn }}/login
+
 organisation_name: UbuntuNet Alliance
 organisation_url: https://ubuntunet.net
 country_code: MW
