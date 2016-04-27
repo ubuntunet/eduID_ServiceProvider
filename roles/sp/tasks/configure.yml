@@ -46,7 +46,6 @@
     dest=/etc/shibboleth/attribute-policy.xml
   notify: restart shibboleth
 
-
 - name: Download Metadata Backup File from RR 
   get_url: > 
     url={{ metadata_url }}
