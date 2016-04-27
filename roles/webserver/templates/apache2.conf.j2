@@ -27,7 +27,7 @@
   <Directory "/var/www/html/students_only">
     Options Indexes FollowSymLinks
     AuthType shibboleth
-    require shib-attr affiliation Student
+    require shib-attr eduPersonAffiliation student
     ShibRequestSetting requireSession true
   </Directory>
 
