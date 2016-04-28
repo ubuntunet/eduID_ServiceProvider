@@ -18,6 +18,9 @@
 
   <Directory "/var/www/html/secure">
     Options Indexes FollowSymLinks
+    AuthType shibboleth
+    require shibboleth
+    ShibRequestSetting requireSession true
   </Directory>
 
   SSLEngine On
