@@ -1,0 +1,40 @@
+# I Installation
+# https://www.switch.ch/aai/guides/sp/installation/?os=ubuntu
+
+# 2. Prerequisites
+- name: Install needed utility programs
+  apt: pkg={{ item }} update_cache=yes cache_valid_time=36000
+  with_items:
+    - ntp
+    - unzip
+
+# 3. Shibboleth Repository
+
+- name: Create download directory
+  file: >
+    path=/usr/local/dist
+    state=directory
+
+- name: Download Switch Repository Key
+  get_url: > 
+    url=http://pkg.switch.ch/switchaai/SWITCHaai-swdistrib.asc 
+    dest=/usr/local/dist/SWITCHaai-swdistrib.asc
+
+- name: Add Repository Key
+  command: apt-key add /usr/local/dist/SWITCHaai-swdistrib.asc
+
+- name: Copy Repository
+  copy: > 
+    src=SWITCHaai-swdistrib.list 
+    dest=/etc/apt/sources.list.d/
+
+- name: Refresh Repository
+  apt: update_cache=yes
+
+
+# 4. Installation
+
+- name: Install Shibboleth
+  apt: pkg=shibboleth update_cache=yes cache_valid_time=36000
+
+

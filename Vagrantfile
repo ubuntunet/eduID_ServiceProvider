@@ -13,9 +13,17 @@ Vagrant.configure(2) do |config|
   # Use the same key for each machine 
   config.ssh.insert_key = false
 
+
   config.vm.define "vagrant_sp" do |sp|
     sp.vm.box = "ubuntu/trusty64"
     sp.vm.network "private_network", ip: "192.168.33.88"
+    sp.vm.network :forwarded_port, guest: 22, host: 2288, id: 'ssh'
+  end
+
+  config.vm.provision "ansible" do |ansible|
+    ansible.playbook = "service_provider.yml"
+    ansible.inventory_path = "inventories/development"
+    ansible.limit = 'all'
   end
 
 

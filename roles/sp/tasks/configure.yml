@@ -1,0 +1,177 @@
+# II Configuration
+# https://www.switch.ch/aai/guides/sp/configuration/
+
+
+
+# - name: Copy signing cert to this machine, if it exists
+#   fetch: >
+#     src=/etc/shibboleth/sp-cert.pem 
+#     dest=roles/sp/files/{{ fqdn }}_sp-cert
+#     flat=yes
+
+# - name: Copy signing key to this machine, if it exists
+#   fetch: >
+#     src=/etc/shibboleth/sp-key.pem 
+#     dest=roles/sp/files/{{ fqdn }}_sp-key
+#     flat=yes
+
+
+# Signing Certificates
+############ If Certificates exist? ##################################
+
+- name: Check if there is a signing certificate locally
+  become: False
+  local_action:
+    module: stat
+    path: "roles/sp/files/{{ fqdn }}_sp-cert.pem"
+  register: have_sign_cert
+
+- name: Check if there is a signing key locally
+  become: False
+  local_action:
+    module: stat
+    path: "roles/sp/files/{{ fqdn }}_sp-key.pem"
+  register: have_sign_key
+
+
+################## Then < Copy existing certificates to remote #######################
+- name: Copy signing key
+  copy: > 
+    src={{ fqdn }}_sp-key.pem
+    dest=/etc/shibboleth/sp-key.pem
+  when: (have_sign_cert.stat.exists == True) and (have_sign_key.stat.exists == True)
+
+- name: Copy signing certificate
+  copy: > 
+    src={{ fqdn }}_sp-cert.pem
+    dest=/etc/shibboleth/sp-cert.pem
+  when: (have_sign_cert.stat.exists == True) and (have_sign_key.stat.exists == True)
+
+############ Else > Create self-signed certificates ##################################
+
+# 4. X.509 certificate for SAML message signing/encrypting
+- name: Create self-signed certificate
+  command: shib-keygen -f -u _shibd -h {{ fqdn }} -y 3 -e https://{{ fqdn }}/shibboleth -o /etc/shibboleth/
+  args:
+    creates: /etc/shibboleth/sp-key.pem
+  when: (have_sign_cert.stat.exists == False) and (have_sign_key.stat.exists == False)
+
+
+- name: Copy signing cert to this machine, if it exists
+  fetch: >
+    src=/etc/shibboleth/sp-cert.pem 
+    dest=roles/sp/files/{{ fqdn }}_sp-cert.pem
+    flat=yes
+  when: (have_sign_cert.stat.exists == False) and (have_sign_key.stat.exists == False)
+
+- name: Copy signing key to this machine, if it exists
+  fetch: >
+    src=/etc/shibboleth/sp-key.pem 
+    dest=roles/sp/files/{{ fqdn }}_sp-key.pem
+    flat=yes
+  when: (have_sign_cert.stat.exists == False) and (have_sign_key.stat.exists == False)
+
+
+
+# - name: Create signing certificate and key - if it doesn't exist already
+#   command: /usr/local/dist/shibboleth-identity-provider-{{ shibboleth_version }}/bin/keygen.sh --lifetime 3 \
+#     --certfile {{ idp_home }}/credentials/idp.crt \
+#     --keyfile {{ idp_home }}/credentials/idp.key \
+#     --hostname {{ fqdn }} \
+#     --uriAltName https://{{ fqdn }}/idp/shibboleth  
+#   environment:
+#     JAVA_HOME: /usr/lib/jvm/java-1.7.0-openjdk-amd64/jre
+#   when: (have_sign_cert.stat.exists == False) and (have_sign_key.stat.exists == False)
+
+# - name: Tighten access to signing key
+#   file: path={{ idp_home }}/credentials/idp.key mode=0600
+#   when: (have_sign_cert.stat.exists == False) and (have_sign_key.stat.exists == False)
+
+# - name: Copy signing certificate to this machine
+#   fetch: >
+#     src={{ idp_home }}/credentials/idp.crt 
+#     dest=roles/idp/files/{{ fqdn }}_idp.crt 
+#     flat=yes
+#   when: (have_sign_cert.stat.exists == False) and (have_sign_key.stat.exists == False)
+
+# - name: Copy signing key to this machine, if it exists
+#   fetch: >
+#     src={{ idp_home }}/credentials/idp.key 
+#     dest=roles/idp/files/{{ fqdn }}_idp.key
+#     flat=yes
+#   when: (have_sign_cert.stat.exists == False) and (have_sign_key.stat.exists == False)
+
+
+
+# - name: Copy signing key
+#   copy: > 
+#     src={{ fqdn }}_sp-key 
+#     dest=/etc/shibboleth/sp-key.pem
+#   # when: have_sign_key.stat.exists == True
+
+# - name: Copy signing certificate
+#   copy: > 
+#     src={{ fqdn }}_sp-cert
+#     dest=/etc/shibboleth/sp-cert.pem
+#   # when: have_sign_cert.stat.exists == True
+
+
+# 4. X.509 certificate for SAML message signing/encrypting
+# - name: Create self-signed certificate
+#   command: shib-keygen -f -u _shibd -h {{ fqdn }} -y 3 -e https://{{ fqdn }}/shibboleth -o /etc/shibboleth/
+#   args:
+#     creates: /etc/shibboleth/sp-key.pem
+
+# - name: Copy certificate to this machine
+#   fetch: >
+#     src=/etc/shibboleth/sp-cert.pem 
+#     dest=roles/sp/files/{{ fqdn }}_sp-cert.pem 
+#     flat=yes
+
+
+
+# 5. Shibboleth Configuration
+
+- name: Copy Shibboleth config file
+  template: >
+    src=shibboleth2.xml.j2
+    dest=/etc/shibboleth/shibboleth2.xml
+  notify: restart shibboleth
+
+- name: Copy attribute-map file
+  template: >
+    src=attribute-map.xml.j2
+    dest=/etc/shibboleth/attribute-map.xml
+  notify: restart shibboleth
+
+- name: Copy attribute-policy file
+  template: >
+    src=attribute-policy.xml.j2
+    dest=/etc/shibboleth/attribute-policy.xml
+  notify: restart shibboleth
+
+
+# - name: Copy IdP metadata file
+#   template: >
+#     src={{ metadata_file }}.j2
+#     dest=/etc/shibboleth/{{ metadata_file }}
+#   notify: restart shibboleth
+
+- name: Copy Federation Metadata signer certificate
+  copy: >
+    src=fedsigner
+    dest=/etc/shibboleth/fedsigner.pem
+  notify: restart shibboleth
+
+- name: Download Metadata Backup File from RR 
+  get_url: > 
+    url={{ metadata_url }}
+    dest=/etc/shibboleth/{{ metadata_file }}
+  notify: restart shibboleth
+
+- name: Hand /etc/shibboleth over to the _shibd user
+  file: >
+    path=/etc/shibboleth
+    owner=_shibd
+    recurse=yes 
+
