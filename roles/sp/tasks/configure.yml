@@ -23,28 +23,28 @@
   become: False
   local_action:
     module: stat
-    path: "roles/sp/files/{{ fqdn }}_sp-cert"
+    path: "roles/sp/files/{{ fqdn }}_sp-cert.pem"
   register: have_sign_cert
 
 - name: Check if there is a signing key locally
   become: False
   local_action:
     module: stat
-    path: "roles/sp/files/{{ fqdn }}_sp-key"
+    path: "roles/sp/files/{{ fqdn }}_sp-key.pem"
   register: have_sign_key
 
 
 ################## Then < Copy existing certificates to remote #######################
 - name: Copy signing key
   copy: > 
-    src={{ fqdn }}_sp-key
-    dest={{ idp_home }}/credentials/idp.key
+    src={{ fqdn }}_sp-key.pem
+    dest=/etc/shibboleth/sp-key.pem
   when: (have_sign_cert.stat.exists == True) and (have_sign_key.stat.exists == True)
 
 - name: Copy signing certificate
   copy: > 
-    src={{ fqdn }}_sp-cert
-    dest={{ idp_home }}/credentials/idp.crt
+    src={{ fqdn }}_sp-cert.pem
+    dest=/etc/shibboleth/sp-cert.pem
   when: (have_sign_cert.stat.exists == True) and (have_sign_key.stat.exists == True)
 
 ############ Else > Create self-signed certificates ##################################
@@ -60,14 +60,14 @@
 - name: Copy signing cert to this machine, if it exists
   fetch: >
     src=/etc/shibboleth/sp-cert.pem 
-    dest=roles/sp/files/{{ fqdn }}_sp-cert
+    dest=roles/sp/files/{{ fqdn }}_sp-cert.pem
     flat=yes
   when: (have_sign_cert.stat.exists == False) and (have_sign_key.stat.exists == False)
 
 - name: Copy signing key to this machine, if it exists
   fetch: >
     src=/etc/shibboleth/sp-key.pem 
-    dest=roles/sp/files/{{ fqdn }}_sp-key
+    dest=roles/sp/files/{{ fqdn }}_sp-key.pem
     flat=yes
   when: (have_sign_cert.stat.exists == False) and (have_sign_key.stat.exists == False)
 
