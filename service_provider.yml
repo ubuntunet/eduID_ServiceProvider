@@ -2,9 +2,13 @@
   hosts: sp
   become: True
 
+  vars_files:
+    - group_vars/secrets.yml
+
   roles:
     - webserver
     - sp
+    - newrelic
 
   handlers:
   - name: restart apache

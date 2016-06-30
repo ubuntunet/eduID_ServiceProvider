@@ -1,5 +1,5 @@
-sp_name: Test Service Provider - Prod
-sp_short_name: test-sp-prod
+sp_name: Dummy Service Provider for UbuntuNet
+sp_short_name: ubuntunet-dummy-sp
 fqdn: sp.ubuntunet.net
 
 default_ds_url: http://cds.ubuntunet.net:8080/discovery/WAYF
@@ -7,7 +7,7 @@ central_ds_url: http://cds.ubuntunet.net
 
 support_email: unida@ubuntunet.net
 admin_email: unida@ubuntunet.net
-federation: unida
+federation: marida
 metadata_url: https://rr.ubuntunet.net/metadata/federation/{{ federation }}/metadata.xml
 metadata_file: metadata.xml
 show_attribute_values: false
