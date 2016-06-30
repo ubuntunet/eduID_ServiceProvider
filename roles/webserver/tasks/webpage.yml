@@ -5,8 +5,8 @@
 
 - name: Copy Logo
   copy: >
-    src=logo-unida.png
-    dest=/var/www/html/logo-unida.png
+    src=logo-{{ sp_short_name }}.png
+    dest=/var/www/html/logo.png
 
 - name: Copy response.html page
   copy: >
