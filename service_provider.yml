@@ -6,8 +6,8 @@
     - group_vars/secrets.yml
 
   roles:
-    - webserver
-    - sp
+    - apache
+    - shibboleth
     - newrelic
 
   handlers:
