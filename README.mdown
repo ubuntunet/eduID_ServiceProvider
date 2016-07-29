@@ -1,0 +1,23 @@
+# Ansible Playbook for Shibboleth Service Provider (SP)
+
+## Clone the Repository including the submodules
+
+git clone --recursive git@github.com:ubuntunet/unIDa_ServiceProvider.git
+
+
+## Download the Metadata file
+
+```
+ curl -k https://{{ fqdn }}/Shibboleth.sso/Metadata
+```
+
+## Troubleshooting
+
+<dl>
+  <dt>
+    I get an error "Starting New Relic Server Monitor: newrelic-sysmond FAILED"
+  </dt>
+  <dd>
+    You have not provided an API key for NewRelic. If you are not interested in using NewRelic, you can comment the role out in service_provider.yml by adding a # in front of it.
+  </dd>
+</dl>
