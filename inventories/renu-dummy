@@ -1,0 +1,13 @@
+renida-dummy-sp ansible_ssh_host=sp.ubuntunet.net
+
+[renida]
+renida-dummy-sp
+
+[renida:vars]
+ansible_user=ubuntu
+
+[sp]
+renida-dummy-sp
+
+[renu-dummy:children]
+sp

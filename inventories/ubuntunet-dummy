@@ -1,13 +1,13 @@
-wingu_sp ansible_ssh_host=sp.ubuntunet.net
+ua-dummy-sp ansible_ssh_host=sp.ubuntunet.net
 
-[wingu]
-wingu_sp
+[ua]
+ua-dummy-sp
 
-[wingu:vars]
+[ua:vars]
 ansible_user=ubuntu
 
 [sp]
-wingu_sp
+ua-dummy-sp
 
 [ubuntunet-dummy:children]
 sp
