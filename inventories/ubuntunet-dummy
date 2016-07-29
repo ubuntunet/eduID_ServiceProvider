@@ -1,0 +1,13 @@
+ua-dummy-sp ansible_ssh_host=sp.ubuntunet.net
+
+[ua]
+ua-dummy-sp
+
+[ua:vars]
+ansible_user=ubuntu
+
+[sp]
+ua-dummy-sp
+
+[ubuntunet-dummy:children]
+sp

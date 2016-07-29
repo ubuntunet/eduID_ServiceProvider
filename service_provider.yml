@@ -2,14 +2,10 @@
   hosts: sp
   become: True
 
+  vars_files:
+    - group_vars/secrets.yml
+
   roles:
-    - webserver
-    - sp
-
-  handlers:
-  - name: restart apache
-    service: name=apache2 state=restarted
-
-  - name: restart shibboleth
-    service: name=shibd state=restarted
-
+    - apache
+    - shibboleth
+    - newrelic
