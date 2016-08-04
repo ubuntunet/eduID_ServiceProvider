@@ -1,13 +1,7 @@
-wingu_sp ansible_ssh_host=sp.ubuntunet.net
-
-[wingu]
-wingu_sp
-
-[wingu:vars]
-ansible_user=ubuntu
+my_sp ansible_user=ubuntu ansible_ssh_host=sp.example.net
 
 [sp]
-wingu_sp
+my_sp
 
 [production:children]
 sp

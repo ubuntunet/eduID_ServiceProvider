@@ -6,6 +6,6 @@
     - group_vars/secrets.yml
 
   roles:
-    - apache
     - shibboleth
-    - newrelic
+    #- apache
+    #- newrelic
