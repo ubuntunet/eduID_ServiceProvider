@@ -1,11 +1,51 @@
 # Ansible Playbook for Shibboleth Service Provider (SP)
 
-## Clone the Repository including the submodules
+## Installation
 
-git clone --recursive git@github.com:ubuntunet/unIDa_ServiceProvider.git
+### Clone the Repository including the submodules
+
+```
+git clone --recursive git@github.com:ubuntunet/unIDa_ServiceProvider.git sp
+cd sp
+```
+
+### Set your inventory
+
+```
+cp inventories/production inventories/<sp_name>
+```
+
+Provide the domain name/IP address of the server you want provision and replace 'production' with your <sp_name> in inventories/<sp_name>
+
+### Set your variables
+
+```
+cp group_vars/production group_vars/<sp_name>
+```
+
+### Set Shibboleth specific variables
+
+```
+cp roles/shibboleth/vars/main.yml.example roles/shibboleth/vars/main.yml
+```
+
+Adapt the values therein accordingly.
+
+### Enable additional Apache/NewRelic roles
+
+If you want to install Apache and/or NewRelic at the same time, uncomment their roles in service_provider.yml.
 
 
-## Download the Metadata file
+### Provision
+
+```
+ansible-playbook -i inventories/<sp_name> service_provider.yml
+```
+
+
+### Download the Metadata file
+
+If you are using a Resource Registry for your Federation (e.g. https://rr.ubuntunet.net/), you'll need to register your new SP there. You can download the metadata file for your SP to faciliate the registration process:
 
 ```
  curl -k https://{{ fqdn }}/Shibboleth.sso/Metadata
