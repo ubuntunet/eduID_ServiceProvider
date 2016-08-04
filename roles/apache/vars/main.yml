@@ -1,0 +1,2 @@
+example_idp_fqdn: idp.example.net
+example_idp_entity_id: https://idp.example.net/shibboleth

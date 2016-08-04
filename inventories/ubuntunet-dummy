@@ -1,13 +1,13 @@
-ua-dummy-sp ansible_ssh_host=sp.ubuntunet.net
+my-sp ansible_ssh_user=ubuntu ansible_ssh_host=sp.ubuntunet.net 
 
-[ua]
-ua-dummy-sp
+#[ua]
+#my-sp
 
-[ua:vars]
-ansible_user=ubuntu
+#[ua:vars]
+#ansible_user=ubuntu
 
 [sp]
-ua-dummy-sp
+my-sp
 
 [ubuntunet-dummy:children]
 sp
