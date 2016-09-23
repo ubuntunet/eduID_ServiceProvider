@@ -12,6 +12,3 @@ federation: unida-test
 metadata_url: https://rr.ubuntunet.net/metadata/federation/{{ federation }}/metadata.xml
 metadata_file: metadata.xml
 show_attribute_values: true
-
-example_idp_fqdn: 192.168.33.44
-example_idp_entity_id: https://192.168.33.44/shibboleth

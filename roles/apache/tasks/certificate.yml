@@ -4,14 +4,14 @@
   become: False
   local_action:
     module: stat
-    path: "roles/webserver/files/{{ fqdn }}.crt"
+    path: "roles/apache/files/{{ fqdn }}.crt"
   register: have_web_cert
 
 - name: Check if there is a website key locally
   become: False
   local_action:
     module: stat
-    path: "roles/webserver/files/{{ fqdn }}.key"
+    path: "roles/apache/files/{{ fqdn }}.key"
   register: have_web_key
 
 ################## Then < Copy existing certificates to remote #######################
