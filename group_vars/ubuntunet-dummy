@@ -2,6 +2,3 @@ sp_name: Dummy Service Provider for UbuntuNet
 sp_short_name: ubuntunet-dummy-sp
 fqdn: sp.ubuntunet.net
 admin_email: eduid@ubuntunet.net
-
-example_idp_fqdn: idp.ubuntunet.net
-example_idp_entity_id: https://idp.ubuntunet.net/shibboleth

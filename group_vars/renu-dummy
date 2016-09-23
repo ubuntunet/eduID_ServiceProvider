@@ -5,6 +5,3 @@ fqdn: sp.ubuntunet.net
 central_ds_url: http://cds.ubuntunet.net
 
 admin_email: unida@ubuntunet.net
-
-example_idp_fqdn: idp.ubuntunet.net
-example_idp_entity_id: https://idp.ubuntunet.net/shibboleth

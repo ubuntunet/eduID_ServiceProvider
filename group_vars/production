@@ -2,3 +2,5 @@ sp_name: Dummy Service Provider
 sp_short_name: my-dummy-sp
 fqdn: sp.example.net
 admin_email: support@example.net
+
+#See roles/shibboleth/vars/main.yml for more variables
