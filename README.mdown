@@ -1,11 +1,14 @@
 # Ansible Playbook for Shibboleth Service Provider (SP)
 
+## Additional Resources
+
+
 ## Installation
 
 ### Clone the Repository including the submodules
 
 ```
-git clone --recursive git@github.com:ubuntunet/unIDa_ServiceProvider.git sp
+git clone --recursive git@github.com:ubuntunet/eduID_ServiceProvider.git sp
 cd sp
 ```
 
@@ -43,13 +46,19 @@ ansible-playbook -i inventories/<sp_name> service_provider.yml
 ```
 
 
-### Download the Metadata file
+## Register the new SP in your federation
 
 If you are using a Resource Registry for your Federation (e.g. https://rr.ubuntunet.net/), you'll need to register your new SP there. You can download the metadata file for your SP to faciliate the registration process:
 
 ```
  curl -k https://{{ fqdn }}/Shibboleth.sso/Metadata
 ```
+
+Once you have successfully downloaded the metadata file, it is time to register it. These instructions are written for operators using the eduID Resource Registry of the UbuntuNet Alliance. 
+
+* Log into the Resource Registry at https://rr.ubuntunet.net/
+* 
+
 
 ## Troubleshooting
 
@@ -59,5 +68,14 @@ If you are using a Resource Registry for your Federation (e.g. https://rr.ubuntu
   </dt>
   <dd>
     You have not provided an API key for NewRelic. If you are not interested in using NewRelic, you can comment the role out in service_provider.yml by adding a # in front of it.
+  </dd>
+</dl>
+
+<dl>
+  <dt>
+    I don't know where to register my SP?
+  </dt>
+  <dd>
+    If you are not part of a federation or don't know which federation to use, please drop us an email at eduid@ubuntunet.net and we'll see that we find a solution for you.
   </dd>
 </dl>

@@ -1,7 +1,10 @@
-sp_name: Dummy Service Provider for UbuntuNet
-sp_short_name: ubuntunet-dummy-sp
-fqdn: sp.ubuntunet.net
+#See roles/shibboleth/vars/main.yml for more variables
 
-central_ds_url: http://cds.ubuntunet.net
+ubuntu_version: [xenial|trusty|precise]
 
-admin_email: unida@ubuntunet.net
+fqdn: sp.example.net
+sp_name: Dummy Service Provider
+sp_description: My Service Provider is the best
+#This needs to be a PNG file
+sp_logo: logo.png 
+admin_email: eduid@example.net
