@@ -5,7 +5,7 @@
 
 - name: Copy Logo
   copy: >
-    src={{ sp_logo }}
+    src={{ sp.logo }}
     dest=/var/www/html/logo.png
 
 - name: Copy response.html page

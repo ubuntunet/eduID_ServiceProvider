@@ -1,10 +1,18 @@
 #See roles/shibboleth/vars/main.yml for more variables
 
-ubuntu_version: [xenial|trusty|precise]
+fqdn: sp.renu.ac.ug
 
-fqdn: sp.example.net
-sp_name: Dummy Service Provider
-sp_description: My Service Provider is the best
-#This needs to be a PNG file
-sp_logo: logo.png 
-admin_email: eduid@example.net
+sp:
+  name: Dummy Service Provider for RENU
+  description: A dummy Service Provider for RENU
+  #This needs to be a PNG file
+  logo: logo-renu.png 
+
+institution:
+  name: RENU
+  display_name: RENU
+  url: https://renu.ac.ug
+
+admin_email: eduid@renu.ac.ug
+
+ubuntu_version: "{{ ansible_distribution_release }}"

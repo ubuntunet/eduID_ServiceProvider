@@ -1,4 +1,4 @@
-renida-dummy-sp ansible_ssh_host=sp.ubuntunet.net
+renida-dummy-sp ansible_host=sp.ubuntunet.net
 
 [renida]
 renida-dummy-sp

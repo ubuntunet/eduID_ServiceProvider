@@ -1,8 +1,19 @@
-ubuntu_version: trusty
+#See roles/shibboleth/vars/main.yml for more variables
 
 fqdn: sp.ubuntunet.net
-sp_name: Dummy Service Provider for UbuntuNet
-sp_description: A dummy Service Provider for UbuntuNet Alliance
-sp_logo: logo-ua.png 
+
+sp:
+  name: Dummy Service Provider for UbuntuNet
+  description: A dummy Service Provider for UbuntuNet Alliance
+  #This needs to be a PNG file
+  logo: logo-ua.png 
+
+institution:
+  name: UbuntuNet Alliance
+  display_name: UbuntuNet Alliance
+  url: https://ubuntunet.net
+  country_code: MW
+
 admin_email: eduid@ubuntunet.net
 
+ubuntu_version: "{{ ansible_distribution_release }}"
