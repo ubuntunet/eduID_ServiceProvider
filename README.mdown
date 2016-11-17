@@ -1,3 +1,5 @@
+[![Build Status](https://travis-ci.org/ubuntunet/eduID_ServiceProvider.png?branch=master)](https://travis-ci.org/ubuntunet/eduID_ServiceProvider)
+
 # Ansible Playbook for Shibboleth Service Provider (SP)
 
 ## Additional Resources
@@ -77,5 +79,14 @@ Once you have successfully downloaded the metadata file, it is time to register 
   </dt>
   <dd>
     If you are not part of a federation or don't know which federation to use, please drop us an email at eduid@ubuntunet.net and we'll see that we find a solution for you.
+  </dd>
+</dl>
+
+<dl>
+  <dt>
+    How does the Travis Continous Integration get access to the secret.yml file?
+  </dt>
+  <dd>
+    https://docs.travis-ci.com/user/encrypting-files/
   </dd>
 </dl>
