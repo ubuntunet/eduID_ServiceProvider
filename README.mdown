@@ -5,7 +5,7 @@
 
 ## Installation
 
-### Clone the Repository including the submodules
+### Clone the Repository recursively including the submodules
 
 ```
 git clone --recursive git@github.com:ubuntunet/eduID_ServiceProvider.git sp
@@ -15,7 +15,7 @@ cd sp
 ### Set your inventory
 
 ```
-cp inventories/production inventories/<sp_name>
+cp inventories/template inventories/<sp_name>
 ```
 
 Provide the domain name/IP address of the server you want provision and replace 'production' with your <sp_name> in inventories/<sp_name>
@@ -23,7 +23,7 @@ Provide the domain name/IP address of the server you want provision and replace 
 ### Set your variables
 
 ```
-cp group_vars/production group_vars/<sp_name>
+cp group_vars/template group_vars/<sp_name>
 ```
 
 ### Set Shibboleth specific variables

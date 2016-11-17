@@ -1,0 +1,7 @@
+my_sp ansible_user=ubuntu ansible_host=sp.example.net
+
+[sp]
+my_sp
+
+[<institution>:children]
+sp

@@ -10,11 +10,11 @@ FQDN = {{ fqdn }}
 
 # The two-letter abbreviation of your country, e.g. 
 # See also https://en.wikipedia.org/wiki/ISO_3166-1_alpha-2#Officially_assigned_code_elements
-COUNTRY = {{ country_code }}
+COUNTRY = {{ institution.country_code }}
 
 # The name of your NREN (e.g. RENU, MAREN, etc.)
 # See also https://www.ubuntunet.net/members
-ORGNAME = {{ organisation_name }}
+ORGNAME = {{ institution.name }}
 
 # subjectAltName entries: to add DNS aliases to the CSR, delete
 # the '#' character in the ALTNAMES line, and change the subsequent

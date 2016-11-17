@@ -1,7 +1,0 @@
-my_sp ansible_user=ubuntu ansible_ssh_host=sp.example.net
-
-[sp]
-my_sp
-
-[production:children]
-sp

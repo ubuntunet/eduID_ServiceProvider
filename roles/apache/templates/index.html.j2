@@ -65,7 +65,7 @@
         $(document).ready(function() {
 
           var djc = DiscoJuice.Hosted.getConfig(
-             "{{ sp_name }}",
+             "{{ sp.name }}",
              "{{ entity_id }}",
              "https://{{ fqdn }}/response.html", [], 
              "https://{{ fqdn }}/Shibboleth.sso/Login?target=https://{{ fqdn }}/Shibboleth.sso/Session&entityID="
