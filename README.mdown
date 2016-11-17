@@ -5,7 +5,7 @@
 
 ## Installation
 
-### Clone the Repository including the submodules
+### Clone the Repository recursively including the submodules
 
 ```
 git clone --recursive git@github.com:ubuntunet/eduID_ServiceProvider.git sp
