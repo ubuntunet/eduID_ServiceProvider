@@ -5,8 +5,8 @@ fqdn: sp.example.net
 sp:
   name: Dummy Service Provider
   description: My Service Provider is the best
-  #This needs to be a PNG file
-  logo: logo.png 
+  #Add your own logo in roles/shibboleth/files
+  logo: logo-default.png 
 
 institution:
   name: My Organisation

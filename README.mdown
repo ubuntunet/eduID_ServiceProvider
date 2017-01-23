@@ -66,6 +66,15 @@ Once you have successfully downloaded the metadata file, it is time to register 
 
 <dl>
   <dt>
+    I'd like to replace the logo with my own.
+  </dt>
+  <dd>
+    You can add your own logo in roles/shibboleth/files/logo.png and rerun the playbook.
+  </dd>
+</dl>
+
+<dl>
+  <dt>
     I get an error "Starting New Relic Server Monitor: newrelic-sysmond FAILED"
   </dt>
   <dd>
