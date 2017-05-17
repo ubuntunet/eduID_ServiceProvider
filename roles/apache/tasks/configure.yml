@@ -1,5 +1,5 @@
 - name: Enable Apache SSL and Rewrite modules
-  command: a2enmod ssl rewrite
+  command: a2enmod ssl rewrite shib2
   notify: restart apache
 
 - name: Copy apache2 config file
