@@ -1,3 +1,10 @@
+- name: Make sure Python2 is available
+  hosts: sp
+  become: True
+  gather_facts: False
+  tasks:
+    - raw: test -e /usr/bin/python || (apt -y update && apt install -y python-minimal)
+
 - name: Install example of a Shibboleth Service Provider for UbuntuNet Alliance
   hosts: sp
   become: True
@@ -7,5 +14,5 @@
 
   roles:
     - shibboleth
-    #- apache
+    - apache
     #- newrelic

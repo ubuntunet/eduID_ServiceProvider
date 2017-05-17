@@ -5,8 +5,8 @@ fqdn: 192.168.33.88
 sp:
   name: Test Service Provider - Dev
   description: My Service Provider is the best
-  #This needs to be a PNG file
-  logo: logo.png 
+  logo:
+  #logo: logo-ua.png
 
 institution:
   name: My Organisation
