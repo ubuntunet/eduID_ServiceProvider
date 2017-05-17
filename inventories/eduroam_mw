@@ -1,0 +1,7 @@
+my_sp ansible_user=ubuntu ansible_host=majete.ubuntunet.net
+
+[sp]
+my_sp
+
+[eduroam_mw:children]
+sp
