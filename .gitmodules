@@ -1,6 +1,3 @@
-[submodule "roles/newrelic"]
-	path = roles/newrelic
-	url = https://github.com/weareinteractive/ansible-newrelic.git
 [submodule "roles/shibboleth"]
 	path = roles/shibboleth
 	url = git@github.com:ubuntunet/ansible-role_sp.git

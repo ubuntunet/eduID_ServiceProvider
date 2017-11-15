@@ -36,9 +36,9 @@ cp roles/shibboleth/vars/main.yml.example roles/shibboleth/vars/main.yml
 
 Adapt the values therein accordingly.
 
-### Enable additional Apache/NewRelic roles
+### Enable additional Apache role
 
-If you want to install Apache and/or NewRelic at the same time, uncomment their roles in service_provider.yml.
+If you want to install Apache at the same time, uncomment its role in service_provider.yml.
 
 
 ### Provision
@@ -73,14 +73,6 @@ Once you have successfully downloaded the metadata file, it is time to register 
   </dd>
 </dl>
 
-<dl>
-  <dt>
-    I get an error "Starting New Relic Server Monitor: newrelic-sysmond FAILED"
-  </dt>
-  <dd>
-    You have not provided an API key for NewRelic. If you are not interested in using NewRelic, you can comment the role out in service_provider.yml by adding a # in front of it.
-  </dd>
-</dl>
 
 <dl>
   <dt>
