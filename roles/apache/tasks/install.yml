@@ -1,2 +1,18 @@
-- name: Install apache2
-  apt: pkg=apache2 update_cache=yes cache_valid_time=36000
+- name: Install Prerequisites for Certbot
+  apt:
+    name: software-properties-common
+    update_cache: yes
+    cache_valid_time: 36000
+
+- name: Add PPA repository for Certbot
+  apt_repository:
+    repo: 'ppa:certbot/certbot'
+
+- name: Install Apache and Certbot
+  apt:
+    name: "{{ item }}"
+    update_cache: yes
+    cache_valid_time: 36000
+  with_items:
+    - apache2
+    - python-certbot-apache
