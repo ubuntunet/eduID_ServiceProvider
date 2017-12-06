@@ -34,9 +34,9 @@
   SSLEngine On
   SSLCipherSuite HIGH:MEDIUM:!aNULL:!kRSA:!MD5:!RC4
   SSLProtocol all -SSLv2 -SSLv3
-  SSLCertificateKeyFile {{ certificate_key_path }}
-  SSLCertificateFile {{ certificate_cert_path }}
-  SSLCertificateChainFile {{ certificate_chain_path }}
+  SSLCertificateKeyFile /etc/ssl/private/{{ fqdn }}.key
+  SSLCertificateFile /etc/ssl/certs/{{ fqdn }}.crt
+  SSLCertificateChainFile /etc/ssl/certs/{{ fqdn }}.crt
 
   BrowserMatch "MSIE [2-6]" \
       nokeepalive ssl-unclean-shutdown \
