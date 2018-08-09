@@ -50,7 +50,7 @@ ansible-playbook -i inventories/<sp_name> service_provider.yml
 
 ## Register the new SP in your federation
 
-If you are using a Resource Registry for your Federation (e.g. https://rr.ubuntunet.net/), you'll need to register your new SP there. You can download the metadata file for your SP to faciliate the registration process:
+If you are using a Resource Registry for your Federation (e.g. https://registry.eduid.africa), you'll need to register your new SP there. You can download the metadata file for your SP to faciliate the registration process:
 
 ```
  curl -k https://{{ fqdn }}/Shibboleth.sso/Metadata
@@ -58,7 +58,7 @@ If you are using a Resource Registry for your Federation (e.g. https://rr.ubuntu
 
 Once you have successfully downloaded the metadata file, it is time to register it. These instructions are written for operators using the eduID Resource Registry of the UbuntuNet Alliance. 
 
-* Log into the Resource Registry at https://rr.ubuntunet.net/
+* Log into the Resource Registry eg. https://registry.eduid.africa
 * 
 
 
