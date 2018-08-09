@@ -1,2 +1,0 @@
-- name: Install Certificate with Let's Encrypt
-  command: "certbot --apache -n -d {{ fqdn }} --agree-tos --email {{ admin_email }}"

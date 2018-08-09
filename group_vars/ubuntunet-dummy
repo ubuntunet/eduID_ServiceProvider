@@ -1,6 +1,6 @@
 #See roles/shibboleth/vars/main.yml for more variables
 
-fqdn: sp.ubuntunet.net
+default_fqdn: sp.ubuntunet.net
 
 sp:
   name: Dummy Service Provider for UbuntuNet

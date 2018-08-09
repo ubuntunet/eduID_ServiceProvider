@@ -2,10 +2,13 @@
   command: a2enmod ssl rewrite shib2
   notify: restart apache
 
+- name: Install Certificate with Let's Encrypt
+  command: "certbot --apache -n -d {{ fqdn | default('default_fqdn') }} --agree-tos --email {{ admin_email }}"
+
 - name: Copy apache2 config file
   template: >
     src=apache2.conf.j2
-    dest=/etc/apache2/sites-available/{{ fqdn }}.conf
+    dest=/etc/apache2/sites-available/{{ fqdn | default('default_fqdn') }}.conf
   notify: restart apache
 
 - name: Disable default configuration
@@ -13,7 +16,7 @@
   notify: restart apache
 
 - name: Enable IdP configuration
-  command: a2ensite {{ fqdn }}
+  command: a2ensite {{ fqdn | default('default_fqdn') }}
   notify: restart apache
 
 - name: Add default ServerName

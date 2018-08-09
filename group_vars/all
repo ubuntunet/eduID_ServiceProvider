@@ -1,1 +1,1 @@
-embedded_ds_url: https://{{ fqdn }}/login
+embedded_ds_url: https://{{ fqdn | default('default_fqdn') }}/login
