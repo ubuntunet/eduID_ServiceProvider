@@ -8,6 +8,9 @@ sp:
   #This needs to be a PNG file
   logo: logo-ua.png 
 
+ds:
+  url: https://discovery.unida.eduid.me/role/idp.ds
+
 institution:
   name: UbuntuNet Alliance
   display_name: UbuntuNet Alliance

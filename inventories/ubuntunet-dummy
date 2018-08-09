@@ -1,13 +1,11 @@
 my-sp ansible_host=sp.ubuntunet.net 
 
-[ua]
-my-sp
-
-[ua:vars]
-ansible_user=ubuntu
-
 [sp]
 my-sp
+
+[sp:vars]
+ansible_user=ubuntu
+ansible_python_interpreter=/usr/bin/python3
 
 [ubuntunet-dummy:children]
 sp

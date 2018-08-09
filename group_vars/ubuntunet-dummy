@@ -6,7 +6,10 @@ sp:
   name: Dummy Service Provider for UbuntuNet
   description: A dummy Service Provider for UbuntuNet Alliance
   #This needs to be a PNG file
-  logo: logo-ua.png 
+  logo: logo-ua.png
+
+ds:
+  url: https://discovery.unida.eduid.me/role/idp.ds
 
 institution:
   name: UbuntuNet Alliance

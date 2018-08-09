@@ -1,13 +1,11 @@
-my-sp ansible_ssh_user=ubuntu ansible_ssh_host=wordpress.ubuntunet.net 
-
-#[ua]
-#my-sp
-
-#[ua:vars]
-#ansible_user=ubuntu
+my-sp ansible_ssh_host=wordpress.ubuntunet.net 
 
 [sp]
 my-sp
+
+[sp:vars]
+ansible_user=ubuntu
+ansible_python_interpreter=/usr/bin/python3
 
 [ubuntunet-wordpress:children]
 sp

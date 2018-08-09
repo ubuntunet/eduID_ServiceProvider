@@ -16,11 +16,10 @@
   command: a2ensite {{ fqdn }}
   notify: restart apache
 
-
 - name: Add default ServerName
-  template: >
-    src=apache2_fqdn.conf.j2
-    dest=/etc/apache2/conf-available/fqdn.conf
+  template:
+    src: apache2_fqdn.conf.j2
+    dest: /etc/apache2/conf-available/fqdn.conf
   notify: restart apache
 
 - name: Enable default ServerName
