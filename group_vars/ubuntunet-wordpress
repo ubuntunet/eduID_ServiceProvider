@@ -1,6 +1,6 @@
 #See roles/shibboleth/vars/main.yml for more variables
 
-fqdn: wordpress.ubuntunet.net
+default_fqdn: wordpress.ubuntunet.net
 
 sp:
   name: Wordpress website of UbuntuNet Alliance

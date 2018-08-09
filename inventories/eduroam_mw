@@ -1,4 +1,4 @@
-my-sp ansible_user=ubuntu ansible_host=majete.ubuntunet.net
+my-sp ansible_user=ubuntu ansible_host=eduroam.ubuntunet.net
 
 [sp]
 my-sp

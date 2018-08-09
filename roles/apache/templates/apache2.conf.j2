@@ -1,5 +1,5 @@
 <VirtualHost *:80>
-  ServerName {{ fqdn }}
+  ServerName {{ fqdn | default('default_fqdn') }}
   DocumentRoot /var/www/html
 
   RewriteEngine on
@@ -9,10 +9,10 @@
 </VirtualHost>
 
 <VirtualHost *:443>
-  ServerName {{ fqdn }}
+  ServerName {{ fqdn | default('default_fqdn') }}
   ServerAdmin {{ admin_email }}
-  CustomLog /var/log/apache2/{{ fqdn }}.access.log combined
-  ErrorLog /var/log/apache2/{{ fqdn }}.error.log
+  CustomLog /var/log/apache2/{{ fqdn | default('default_fqdn') }}.access.log combined
+  ErrorLog /var/log/apache2/{{ fqdn | default('default_fqdn') }}.error.log
 
   DocumentRoot /var/www/html
 
@@ -34,9 +34,9 @@
   SSLEngine On
   SSLCipherSuite HIGH:MEDIUM:!aNULL:!kRSA:!MD5:!RC4
   SSLProtocol all -SSLv2 -SSLv3
-  SSLCertificateKeyFile /etc/ssl/private/{{ fqdn }}.key
-  SSLCertificateFile /etc/ssl/certs/{{ fqdn }}.crt
-  SSLCertificateChainFile /etc/ssl/certs/{{ fqdn }}.crt
+  SSLCertificateKeyFile /etc/letsencrypt/live/{{ fqdn | default('default_fqdn') }}/privkey.pem
+  SSLCertificateFile /etc/letsencrypt/live/{{ fqdn | default('default_fqdn') }}/fullchain.pem
+  SSLCertificateChainFile /etc/letsencrypt/live/{{ fqdn | default('default_fqdn') }}/fullchain.pem
 
   BrowserMatch "MSIE [2-6]" \
       nokeepalive ssl-unclean-shutdown \

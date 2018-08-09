@@ -1,6 +1,6 @@
 #See roles/shibboleth/vars/main.yml for more variables
 
-fqdn: sp.example.net
+default_fqdn: sp.example.net
 
 sp:
   name: Dummy Service Provider

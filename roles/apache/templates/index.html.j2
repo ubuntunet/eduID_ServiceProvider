@@ -26,7 +26,7 @@
 
 
       <h2>Get Attributes, login directly</h2>
-      <a class="btn btn-primary" role="button" href="https://{{ fqdn }}/Shibboleth.sso/Login?entityID=https%3A%2F%2F{{ example_idp_fqdn }}%2Fshibboleth&target=https%3A%2F%2F{{ fqdn }}%2FShibboleth.sso%2FSession">Login via IdP</a>
+      <a class="btn btn-primary" role="button" href="https://{{ fqdn | default('default_fqdn') }}/Shibboleth.sso/Login?entityID=https%3A%2F%2F{{ example_idp_fqdn }}%2Fshibboleth&target=https%3A%2F%2F{{ fqdn | default('default_fqdn') }}%2FShibboleth.sso%2FSession">Login via IdP</a>
 
       <hr />
 
@@ -67,8 +67,8 @@
           var djc = DiscoJuice.Hosted.getConfig(
              "{{ sp.name }}",
              "{{ entity_id }}",
-             "https://{{ fqdn }}/response.html", [], 
-             "https://{{ fqdn }}/Shibboleth.sso/Login?target=https://{{ fqdn }}/Shibboleth.sso/Session&entityID="
+             "https://{{ fqdn | default('default_fqdn') }}/response.html", [], 
+             "https://{{ fqdn | default('default_fqdn') }}/Shibboleth.sso/Login?target=https://{{ fqdn | default('default_fqdn') }}/Shibboleth.sso/Session&entityID="
           );
 
 
