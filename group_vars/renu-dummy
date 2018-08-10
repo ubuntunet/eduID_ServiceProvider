@@ -1,6 +1,6 @@
 #See roles/shibboleth/vars/main.yml for more variables
 
-default_fqdn: sp.renu.ac.ug
+fqdn: sp.renu.ac.ug
 
 sp:
   name: Dummy Service Provider for RENU

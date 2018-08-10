@@ -1,6 +1,6 @@
 #See roles/shibboleth/vars/main.yml for more variables
 
-default_fqdn: 192.168.33.88
+fqdn: 192.168.33.88
 
 sp:
   name: Test Service Provider - Dev

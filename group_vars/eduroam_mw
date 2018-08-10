@@ -1,6 +1,6 @@
 #See roles/shibboleth/vars/main.yml for more variables
 
-default_fqdn: eduroam.ubuntunet.net
+fqdn: eduroam.ubuntunet.net
 
 sp:
   name: eduroam.mw
