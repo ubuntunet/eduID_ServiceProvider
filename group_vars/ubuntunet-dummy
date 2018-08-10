@@ -1,6 +1,6 @@
 #See roles/shibboleth/vars/main.yml for more variables
 
-default_fqdn: sp.ubuntunet.net
+fqdn: sp.ubuntunet.net
 
 sp:
   name: Dummy Service Provider for UbuntuNet
@@ -9,7 +9,7 @@ sp:
   logo: logo-ua.png
 
 ds:
-  url: https://discovery.unida.eduid.me/role/idp.ds
+  url: https://discovery.unida.eduid.africa/role/idp.ds
 
 institution:
   name: UbuntuNet Alliance
